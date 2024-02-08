@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home_Page</title>
+    <style>
+      body {
+        height: 100vh;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      form {
+        height: 500px;
+        width: 600px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+      }
+      input {
+        height: 40px;
+        width: 60vw;
+        font-size: 20px;
+        text-align: center;
+      }
+      label {
+        font-size: 22px;
+        font-weight: bold;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Enter Product Details</h2>
+    <form action="upload" method="post" enctype="multipart/form-data">
+      <div>
+        <label for="">Name:</label
+        ><input type="text" name="Name" placeholder="Name of Your Product" />
+      </div>
+      <div>
+        <label for="">Price:</label>
+        <input
+          type="number"
+          placeholder="Enter Price in Rupees of Your Product"
+          name="Price"
+        />
+      </div>
+      <div>
+        <label for=""> Purchase Date</label> <input name="date" type="date" />
+      </div>
+      <div>
+        <label for="">Upload Product Image</label
+        ><input type="file" name="productImage" id="image" />
+      </div>
+      <button type="submit">submit</button>
+    </form>
+  </body>
+</html>
