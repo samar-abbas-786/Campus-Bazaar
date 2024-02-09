@@ -31,7 +31,7 @@ app.set("views", path.resolve("./views"));
 // Multer Setup
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, "uploads/"); // Save uploaded files to the 'uploads' directory
+    cb(null, "uploads/");
   },
   filename: function (req, file, cb) {
     cb(null, Date.now() + path.extname(file.originalname)); // Set filename to be current timestamp + original file extension
@@ -39,16 +39,18 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage: storage });
 
-// Route to handle file upload and create a new item
+// upload and create a new item
 app.post("/upload", upload.single("productImage"), async (req, res) => {
-  console.log("req.file:", req.file); // Debug: Check if req.file is populated
+  console.log("req.file:", req.file);
   if (!req.file) {
-    return res.status(400).send("No file uploaded."); // Send error response if no file uploaded
+    return res.status(400).send("No file uploaded.");
   }
 
   const { Name, Price, date } = req.body;
-  const productImage = req.file.path; // Get the path of the uploaded image
-  console.log("Uploaded file path:", productImage); // Debug: Check the uploaded file path
+  const productImage = req.file.filename;
+  // console.log(productImage);
+  console.log("Uploaded file path:", productImage);
+
   try {
     const newItem = await User.create({
       Name,
@@ -57,10 +59,11 @@ app.post("/upload", upload.single("productImage"), async (req, res) => {
       productImage,
     });
     console.log("New item added:", newItem);
+
     res.render("show", {
-      //   data: url.replace(/'/g, ""),
-      data: productImage,
+      data: productImage.replace(/'/g, ""),
     });
+
     console.log(productImage);
   } catch (error) {
     console.error("Error adding new item:", error);
@@ -68,7 +71,6 @@ app.post("/upload", upload.single("productImage"), async (req, res) => {
   }
 });
 
-// Route to render the home page with the upload form
 app.get("/", (req, res) => {
   return res.render("home");
 });
