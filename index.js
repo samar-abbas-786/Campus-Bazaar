@@ -49,7 +49,7 @@ app.post("/upload", upload.single("productImage"), async (req, res) => {
   const { Name, Price, date } = req.body;
   const productImage = req.file.filename;
   // console.log(productImage);
-  console.log("Uploaded file path:", productImage);
+  // console.log("Uploaded file path: ", productImage);
 
   try {
     const newItem = await User.create({
@@ -71,8 +71,13 @@ app.post("/upload", upload.single("productImage"), async (req, res) => {
   }
 });
 
+///uploads/1707745622116.jpg
 app.get("/", (req, res) => {
   return res.render("home");
+});
+app.get("/api/user", async (req, res) => {
+  const newUser = await User.find();
+  return res.json(newUser);
 });
 
 app.listen(PORT, () => {
