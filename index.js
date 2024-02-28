@@ -47,38 +47,51 @@ app.post("/upload", upload.single("productImage"), async (req, res) => {
   }
 
   const { Name, Price, date } = req.body;
-  const productImage = req.file.filename;
-  // console.log(productImage);
-  // console.log("Uploaded file path: ", productImage);
 
   try {
     const newItem = await User.create({
       Name,
       Price,
       date,
-      productImage,
+      productImage: req.file.filename, // Corrected to use req.file.filename
     });
     console.log("New item added:", newItem);
 
     res.render("show", {
-      data: productImage.replace(/'/g, ""),
+      newItem: newItem, // Pass newItem to show view for displaying
     });
-
-    console.log(productImage);
   } catch (error) {
     console.error("Error adding new item:", error);
     res.status(500).send("Error adding new item");
   }
 });
 
-///uploads/1707745622116.jpg
 app.get("/", (req, res) => {
   return res.render("home");
 });
+
 app.get("/api/user", async (req, res) => {
-  const newUser = await User.find();
-  return res.json(newUser);
+  try {
+    const users = await User.find();
+    res.send(users);
+  } catch (error) {
+    console.error("Error fetching users:", error);
+    res.status(500).send("Error fetching users");
+  }
 });
+
+// app.get("/api/user", async (req, res) => {
+//   try {
+//     const users = await User.find();
+//     // Extract _id field from each user and send it in the response
+//     const userIds = users.map((user) => user._id);
+//     const newUser = await User.findById(userIds);
+//     res.send(newUser);
+//   } catch (error) {
+//     console.error("Error fetching users:", error);
+//     res.status(500).send("Error fetching users");
+//   }
+// });
 
 app.listen(PORT, () => {
   console.log(`App is running at http://localhost:${PORT}`);

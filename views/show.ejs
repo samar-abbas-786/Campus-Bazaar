@@ -6,34 +6,28 @@
     <title>Show Item</title>
   </head>
   <body>
-    <div>
-      <!-- Display the uploaded product image -->
-      <h1 id="name"></h1>
-      <h2 id="price"></h2>
-      <h3 id="data"></h3>
-    </div>
+    <div id="userList"></div>
     <script>
-      // Fetch user data from the API endpoint
       fetch("/api/user")
         .then((response) => {
-          // Check if response is successful
           if (!response.ok) {
             throw new Error("Network response was not ok");
           }
-          // Parse JSON response
           return response.json();
         })
         .then((data) => {
-          // Assuming data is an array of user objects
-          // For now, just log the first user to the console
-          console.log(data[0]);
-          document.getElementById("name").innerHTML = data[0].Name;
-          document.getElementById("price").innerHTML = data[0].Price;
-          document.getElementById("date").innerHTML = data[0].date;
-        })
-        .catch((error) => {
-          // Log any errors that occurred during the fetch
-          // console.error("There was a problem with the fetch operation:", error);
+          const userListDiv = document.getElementById("userList");
+          data.forEach((user) => {
+            const userDiv = document.createElement("div");
+            userDiv.innerHTML = `
+            <h1>Name: ${user.Name}</h1>
+            <h2>Price: ${user.Price}</h2>
+            <h3>Date: ${user.date}</h3>
+            <img src="/uploads/${user.productImage}" alt="Product Image" width="200" />
+            <hr/>
+          `;
+            userListDiv.appendChild(userDiv);
+          });
         });
     </script>
   </body>
