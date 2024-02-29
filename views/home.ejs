@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home_Page</title>
     <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
       body {
         height: 100vh;
         text-align: center;
@@ -26,12 +31,36 @@
         font-size: 20px;
         text-align: center;
       }
+      div {
+        display: flex;
+        justify-content: space-around;
+      }
       label {
         font-size: 22px;
         font-weight: bold;
         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        width: 20vw;
+        text-decoration: underline;
       }
-     
+      h2 {
+        background-color: green;
+        width: 100vw;
+        color: rgb(255, 255, 255);
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+          sans-serif;
+        padding: 1rem;
+      }
+      button {
+        height: 30px;
+        width: 130px;
+        background-color: darkblue;
+        color: white;
+        font-weight: bold;
+        border-radius: 10px;
+        font-size: 19px;
+        margin-left: 10rem;
+      }
     </style>
   </head>
   <body>
@@ -39,11 +68,17 @@
     <form action="/upload" method="post" enctype="multipart/form-data">
       <div>
         <label for="">Product Name:</label
-        ><input type="text" name="Name" placeholder="Name of Your Product" />
+        ><input
+          required
+          type="text"
+          name="Name"
+          placeholder="Name of Your Product"
+        />
       </div>
       <div>
         <label for="">Price:</label>
         <input
+          required
           type="number"
           placeholder="Enter Price in Rupees of Your Product"
           name="Price"
@@ -51,11 +86,21 @@
       </div>
       <div>
         <label for="">Contact Number:</label>
-        <input name="Contact_NO" type="string" />
+        <input
+          required
+          name="Contact_NO"
+          type="string"
+          placeholder="Enter Your Contact Number"
+        />
       </div>
       <div>
-        <label for="">ADDRESS:</label>
-        <input name="ADDRESS" type="string" />
+        <label for="">Address:</label>
+        <input
+          required
+          name="ADDRESS"
+          type="string"
+          placeholder="Enter Your address"
+        />
       </div>
       <!-- <div>
         <label for="">Upload Product Image</label

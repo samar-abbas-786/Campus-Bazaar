@@ -6,21 +6,13 @@ const signupSchema = new mongoose.Schema({
     require: true,
   },
   email: {
-    type: Number,
+    type: String, // Changed from Number to String
     require: true,
   },
   password: {
     type: String,
     require: true,
   },
-  // productImage: {
-  //   type: String,
-  //   require: true,
-  // },
-  //   ADDRESS: {
-  //     type: String,
-  //     require: true,
-  //   },
 });
 
 const Signup = mongoose.model("Signup", signupSchema);

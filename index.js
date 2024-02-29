@@ -9,44 +9,36 @@ const Signup = require("./models/signupSchema");
 const multer = require("multer");
 
 // DataBase Connection for ADD_PRODUCT
-const ADD_PRODUCT_DB_URI = "mongodb://localhost:27017/ADD_PRODUCT";
-const ADD_PRODUCT_DB_OPTIONS = {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-};
 
-const ADD_PRODUCT_DB = mongoose.createConnection(
-  ADD_PRODUCT_DB_URI,
-  ADD_PRODUCT_DB_OPTIONS
-);
-ADD_PRODUCT_DB.on(
-  "error",
-  console.error.bind(console, "Connection error to ADD_PRODUCT:")
-);
-ADD_PRODUCT_DB.once("open", () => {
-  console.log("Connected to ADD_PRODUCT!");
+mongoose.connect("mongodb://localhost:27017/ADD_PRODUCT").then(() => {
+  console.log("MONGODB1 CONNECTED");
 });
+
+// const ADD_PRODUCT_DB_URI = "mongodb://localhost:27017/ADD_PRODUCT";
+
+// const ADD_PRODUCT_DB = mongoose.createConnection(ADD_PRODUCT_DB_URI);
+// ADD_PRODUCT_DB.on(
+//   "error",
+//   console.error.bind(console, "Connection error to ADD_PRODUCT:")
+// );
+// ADD_PRODUCT_DB.once("open", () => {
+//   console.log("Connected to ADD_PRODUCT!");
+// });
 
 // DataBase Connection for ADD_PRODUCT_SIGNUP
-const ADD_PRODUCT_SIGNUP_DB_URI =
-  "mongodb://localhost:27017/ADD_PRODUCT_SIGNUP";
-const ADD_PRODUCT_SIGNUP_DB_OPTIONS = {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-};
+// const ADD_PRODUCT_SIGNUP_DB_URI =
+//   "mongodb://localhost:27017/ADD_PRODUCT_SIGNUP";
 
-const ADD_PRODUCT_SIGNUP_DB = mongoose.createConnection(
-  ADD_PRODUCT_SIGNUP_DB_URI,
-  ADD_PRODUCT_SIGNUP_DB_OPTIONS
-);
-ADD_PRODUCT_SIGNUP_DB.on(
-  "error",
-  console.error.bind(console, "Connection error to ADD_PRODUCT_SIGNUP:")
-);
-ADD_PRODUCT_SIGNUP_DB.once("open", () => {
-  console.log("Connected to ADD_PRODUCT_SIGNUP!");
-});
-
+// const ADD_PRODUCT_SIGNUP_DB = mongoose.createConnection(
+//   ADD_PRODUCT_SIGNUP_DB_URI
+// );
+// ADD_PRODUCT_SIGNUP_DB.on(
+//   "error",
+//   console.error.bind(console, "Connection error to ADD_PRODUCT_SIGNUP:")
+// );
+// ADD_PRODUCT_SIGNUP_DB.once("open", () => {
+//   console.log("Connected to ADD_PRODUCT_SIGNUP!");
+// });
 // MiddleWares
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
