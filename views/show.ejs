@@ -4,9 +4,62 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Show Item</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      nav {
+        height: 60px;
+        width: 100vw;
+        background-color: lightcoral;
+        color: white;
+      }
+      ul {
+        height: 60px;
+        width: 60vw;
+        float: right;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+      }
+      ul li {
+        list-style: none;
+      }
+      ul li a {
+        text-decoration: none;
+        font-size: 19px;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+          sans-serif;
+        font-weight: bold;
+        color: white;
+      }
+      #userList {
+        height: 100%;
+        width: 100vw;
+      }
+      #listItem {
+        height: max-content;
+        width: auto;
+        display: flex;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+      }
+    </style>
   </head>
   <body>
-    <div id="userList"></div>
+    <nav>
+      <ul>
+        <li><a href="">HOME</a></li>
+        <li><a href="home.ejs">ADD PRODUCT</a></li>
+        <li><a href="">SIGNUP</a></li>
+      </ul>
+    </nav>
+    <div id="userList">
+      <div id="listItem"></div>
+    </div>
     <script>
       fetch("/api/user")
         .then((response) => {
@@ -16,16 +69,23 @@
           return response.json();
         })
         .then((data) => {
-          const userListDiv = document.getElementById("userList");
+          const userListDiv = document.getElementById("listItem");
           data.forEach((user) => {
             const userDiv = document.createElement("div");
             userDiv.innerHTML = `
-            <h1>Name: ${user.Name}</h1>
-            <h2>Price: ${user.Price}</h2>
-            <h3>Date: ${user.date}</h3>
-            <img src="/uploads/${user.productImage}" alt="Product Image" width="200" />
-            <hr/>
+            <h2 id='Name'>Name: ${user.Name}</h2>
+            <h2 id='Price'>Price: ${user.Price}</h2>
+            <h2>Contact_NO: ${user.Contact_NO}</h2>
+            <h2>ADDRESS: ${user.ADDRESS}</h2>
+
           `;
+
+            userDiv.style.width = "200px";
+            userDiv.style.height = "auto";
+            userDiv.style.flexWrap = "wrap";
+            userDiv.style.border = "1px solid green";
+            userDiv.style.margin = "2.5 rem";
+            userDiv.style.padding = "2.5 rem";
             userListDiv.appendChild(userDiv);
           });
         });
