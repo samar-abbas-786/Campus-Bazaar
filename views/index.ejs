@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SELL & GET</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <nav>
+      <div class="left">
+        <h1>🛍️UniUnity</h1>
+      </div>
+      <div class="right">
+        <ul>
+          <form action=""><button>Home</button></form>
+
+          <form action=""><button>About</button></form>
+
+          <form action=""><button>Add Product</button></form>
+
+          <form action=""><button>Service</button></form>
+
+          <form action=""><button>Suggestion</button></form>
+        </ul>
+      </div>
+      <div class="cart">
+        <i class="fa-solid fa-cart-shopping fa-xl" style="color: #000000"></i>
+        <p id="count"></p>
+      </div>
+    </nav>
+    <div class="hero">
+      <div class="text">
+        <!-- <div class="same"> -->
+        <h1>Welcome to <span>Uni</span><b>Unity</b></h1>
+        <p>
+          Join us in revolutionizing hostel and college living! Explore our
+          comprehensive range of rentals meticulously crafted to meet your
+          unique needs, whether it's furnishing your living space, upgrading
+          your workspace, or simplifying your daily routine. With our
+          user-friendly platform, renting has never been easier
+        </p>
+        <!-- </div> -->
+        <button>Explore</button>
+      </div>
+      <div class="image">
+        <img src="/images/college_student.jpeg" alt="" srcset="" />
+      </div>
+    </div>
+    <div class="service">
+      <h1>Our Services</h1>
+      <div class="boxes">
+        <div class="box1">
+          <i
+            class="fa-sharp fa-solid fa-bag-shopping fa-2xl"
+            style="color: #000000"
+          ></i>
+          <h2>On Rent</h2>
+          <p>
+            Catering exclusively to hostel and college staff, our platform
+            offers a straightforward solution: renting. From textbooks to tech
+            gadgets, we've got you covered with a wide array of items available
+            for short-term or long-term rental. Skip the hassle of buying and
+            enjoy the flexibility of temporary ownership. Rent smarter, live
+            better.
+          </p>
+          <button>Know More</button>
+        </div>
+        <div id="box2" class="box1">
+          <i
+            class="fa-solid fa-money-check-dollar fa-2xl"
+            style="color: #000000"
+          ></i>
+          <h2>Sell Your Items</h2>
+          <p>
+            In addition to offering convenient rentals, we also provide a
+            platform for selling items, empowering users to declutter and earn
+            extra income effortlessly. Whether you're a student looking to
+            offload textbooks at the end of the semester or a staff member with
+            unused items to spare, our website offers a seamless selling
+            experience.
+          </p>
+          <button>Know More</button>
+        </div>
+        <div class="box1">
+          <i class="fa-brands fa-shopify fa-2xl" style="color: #000000"></i>
+          <h2>Buy</h2>
+          <p>
+            we offer an extensive selection of items to cater to your needs.
+            Whether you're a student stocking up for the semester or a staff
+            member looking to upgrade your space, our platform makes shopping
+            easy and convenient. Browse our inventory, compare prices, and enjoy
+            the convenience of doorstep delivery. Find what you need and make it
+            yours with just a few clicks
+          </p>
+          <button>Know More</button>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    const count = document.getElementById("count");
+    count.innerHTML = "";
+  </script>
+</html>

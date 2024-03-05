@@ -14,34 +14,10 @@ mongoose.connect("mongodb://localhost:27017/ADD_PRODUCT").then(() => {
   console.log("MONGODB1 CONNECTED");
 });
 
-// const ADD_PRODUCT_DB_URI = "mongodb://localhost:27017/ADD_PRODUCT";
-
-// const ADD_PRODUCT_DB = mongoose.createConnection(ADD_PRODUCT_DB_URI);
-// ADD_PRODUCT_DB.on(
-//   "error",
-//   console.error.bind(console, "Connection error to ADD_PRODUCT:")
-// );
-// ADD_PRODUCT_DB.once("open", () => {
-//   console.log("Connected to ADD_PRODUCT!");
-// });
-
-// DataBase Connection for ADD_PRODUCT_SIGNUP
-// const ADD_PRODUCT_SIGNUP_DB_URI =
-//   "mongodb://localhost:27017/ADD_PRODUCT_SIGNUP";
-
-// const ADD_PRODUCT_SIGNUP_DB = mongoose.createConnection(
-//   ADD_PRODUCT_SIGNUP_DB_URI
-// );
-// ADD_PRODUCT_SIGNUP_DB.on(
-//   "error",
-//   console.error.bind(console, "Connection error to ADD_PRODUCT_SIGNUP:")
-// );
-// ADD_PRODUCT_SIGNUP_DB.once("open", () => {
-//   console.log("Connected to ADD_PRODUCT_SIGNUP!");
-// });
 // MiddleWares
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.static(path.join(__dirname, "public")));
 
 // View Engine
 app.set("view engine", "ejs");
@@ -88,7 +64,7 @@ app.post("/upload", upload.single("productImage"), async (req, res) => {
 });
 
 app.get("/", (req, res) => {
-  return res.render("next_show");
+  return res.render("index");
 });
 
 app.get("/api/user", async (req, res) => {

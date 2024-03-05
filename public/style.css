@@ -1,0 +1,175 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+nav{
+    height: 50px;
+    width: 100vw;
+    box-shadow: 1px 1.5px rgb(189, 186, 186);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 2rem;
+    padding-left: 1rem;
+    /* background-color: rgb(241, 241, 241); */
+}
+.left{
+    width: 15vw;
+    height: 50px;
+    font-family: sans-serif;
+    display: flex;
+    align-items: center;
+}
+.right{
+    width: 70vw;
+    height: 50px;
+    display: flex;
+    justify-content: end;
+}
+.right ul{
+    width: 50vw;
+    height: 50px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.right button{
+    background-color: transparent;
+    border: none;
+    font-size: 16.5px;
+}
+.cart{
+    display: flex;
+    align-items: center;
+}
+.cart i{
+    margin-left: 3px;
+}
+/* .right button:hover{
+   
+} */
+
+/* Hero Portion */
+
+.hero{
+    height: 90vh;
+    width: 100vw;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.text{
+    width: 55vw;
+    height: 40vh;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+.text h1{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 3rem;
+    text-align: center;
+
+}
+.text p{
+    font-size: 17px;
+    word-spacing: 2px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.text span{
+    color: rgb(44, 109, 179);
+
+}
+.text b{
+    color: orange;
+}
+.image{
+    height: 50vh;
+    width: 46vw;
+    display: flex;
+    justify-content: center;
+    
+}
+.image img{
+    border-radius: 50%;
+}
+.hero button{
+    height: 30px;
+    width: auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    font-size: 18px;
+    background-color: orange;
+    font-family: 'Times New Roman', Times, serif;
+    border: 1px solid white;
+    color: white;
+    font-weight: bold;
+    border-radius: 4px;
+    margin-top: 1rem;
+}
+
+/* Hero Portion  */
+
+/* Service Portion */
+.service{
+    height: 100vh;
+    width: 100vw;
+    background-color: rgb(241, 241, 241);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:center;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    /* align-items: center; */
+}
+.service h1{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.boxes{
+    width: 100vw;
+    display: flex;
+    justify-content: space-evenly;
+}
+.box1{
+    width: 23vw;
+    height: 70vh;
+    border: 1px solid black;
+    border-radius: 7px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    font-family: sans-serif;
+    box-shadow: 4px 2px rgb(173, 170, 170);
+}
+.box1 p{
+    font-size: 17px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    word-spacing: 3px;
+    text-align: center;
+}
+.box1 button{
+    height: 30px;
+    width: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    font-size: 18px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: rgb(4, 4, 125);
+    color: white;
+    font-weight: bold;
+    
+}
+.box1 button:hover{
+    background-color: rgba(4, 4, 125, 0.7);
+}
+#box2{
+    margin-top: 5rem;
+}
+
+/* Service Portion */
