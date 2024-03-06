@@ -103,6 +103,10 @@ app.post("/signup", async (req, res) => {
     res.status(500).send("Error adding new user");
   }
 });
+
+app.get("/add", (req, res) => {
+  res.render("add");
+});
 app.listen(PORT, () => {
   console.log(`App is running at http://localhost:${PORT}`);
 });
