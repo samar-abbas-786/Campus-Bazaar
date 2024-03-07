@@ -5,19 +5,11 @@ const userSchema = new mongoose.Schema({
     type: String,
     require: true,
   },
-  Price: {
-    type: Number,
+  email: {
+    type: String, 
     require: true,
   },
-  Contact_NO: {
-    type: String,
-    require: true,
-  },
-  // productImage: {
-  //   type: String,
-  //   require: true,
-  // },
-  ADDRESS: {
+  password: {
     type: String,
     require: true,
   },

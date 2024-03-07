@@ -4,8 +4,8 @@ const mongoose = require("mongoose");
 const path = require("path");
 const PORT = process.env.PORT || 3000;
 const bodyParser = require("body-parser");
+const Product = require("./models/productSchema");
 const User = require("./models/userSchema");
-const Signup = require("./models/signupSchema");
 const multer = require("multer");
 
 // DataBase Connection for ADD_PRODUCT
@@ -44,7 +44,7 @@ app.post("/upload", upload.single("productImage"), async (req, res) => {
   const { Name, Price, date, Contact_NO, ADDRESS } = req.body;
 
   try {
-    const newItem = await User.create({
+    const newItem = await Product.create({
       Name,
       Price,
       date,
@@ -69,7 +69,7 @@ app.get("/", (req, res) => {
 
 app.get("/api/user", async (req, res) => {
   try {
-    const users = await User.find();
+    const users = await Product.find();
     res.send(users);
   } catch (error) {
     console.error("Error fetching users:", error);
@@ -80,28 +80,34 @@ app.get("/api/user", async (req, res) => {
 app.post("/button", (req, res) => {
   res.render("home");
 });
-app.post("/sign", (req, res) => {
-  res.render("signup");
-});
 
 //SignUp Post Requuest
-app.post("/signup", async (req, res) => {
+app.post("/signup/user", async (req, res) => {
   const { Name, email, password } = req.body;
+  console.log(req.body);
 
   try {
-    // Create a new user using the Signup model from the ADD_PRODUCT_SIGNUP_DB connection
-    const newUser = await Signup.create({
+    // Create a new instance of the User model
+    const newUser = new User({
       Name,
       email,
       password,
     });
+
+    // Save the new user to the database
+    await newUser.save();
+
     console.log("New User added:", newUser);
 
-    res.render("next_show");
+    res.render("signup");
   } catch (error) {
     console.error("Error adding new user:", error);
     res.status(500).send("Error adding new user");
   }
+});
+
+app.get("/signup/get", (req, res) => {
+  res.render("signup");
 });
 
 app.get("/add", (req, res) => {

@@ -96,6 +96,14 @@ nav{
 .image img{
     border-radius: 50%;
 }
+.image1{
+    height: 50vh;
+    width: 46vw;
+    display: flex;
+    justify-content: center;
+    display: none;
+    
+}
 .hero button{
     height: 30px;
     width: auto;
@@ -251,6 +259,7 @@ footer .left{
 .social i:hover{
     color: rgb(59, 55, 55);
     font-size: 40px;
+    transition: 0.3s ease all;
   }
 /* footer Section */
 .copy{
@@ -259,5 +268,47 @@ footer .left{
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 14px;
     font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Responsive Web design */
+@media screen and (max-width: 800px){
+   .right{
+    display: none;
+   }
+   .left h1{
+    font-size: 20px;
+    width: 40vw;
+   }
+   .hero{
+    height: 80vh;
+    flex-direction: column;
+   }
+   .hero text{
+    width: 100vw;
+    height: 30vh;
+   }
+   .hero .text h1{
+    font-size: 24px;
+   }
+   .text p{
+    font-size: 13px;
+   }
+   /* .image{
+    display: none;
+   } */
+   /* .image1 img{
+    height: 40vh;
+    width: 80vw;
+    border-radius: 50%;
+   }
+  .image1{
+    display: block;
+    height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+ 
+  } */
 }

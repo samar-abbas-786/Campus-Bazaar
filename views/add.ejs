@@ -16,50 +16,54 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        background-color: #f4f4f4; /* Background color */
+        font-family: Arial, sans-serif; /* Font family */
+      }
+      h2 {
+        background-color: #007bff; /* Header background color */
+        width: 100vw;
+        color: #ffffff;
+        padding: 1rem;
+        margin-bottom: 1rem;
       }
       form {
-        height: 500px;
-        width: 600px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-evenly;
+        max-width: 600px; /* Max width for form */
+        width: 90%; /* Responsive width */
+        padding: 2rem;
+        background-color: #ffffff; /* Form background color */
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Form shadow */
+      }
+      label {
+        font-size: 18px;
+        font-weight: bold;
+        width: 100%;
+        text-align: left;
+        margin-bottom: 0.5rem;
       }
       input {
         height: 40px;
-        width: 60vw;
-        font-size: 20px;
-        text-align: center;
-      }
-      div {
-        display: flex;
-        justify-content: space-around;
-      }
-      label {
-        font-size: 22px;
-        font-weight: bold;
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        width: 20vw;
-        text-decoration: underline;
-      }
-      h2 {
-        background-color: green;
-        width: 100vw;
-        color: rgb(255, 255, 255);
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-          Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
-          sans-serif;
-        padding: 1rem;
+        width: 100%;
+        font-size: 16px;
+        padding: 0.5rem;
+        border: 1px solid #ccc; /* Input border */
+        border-radius: 5px;
+        margin-bottom: 1rem;
       }
       button {
-        height: 30px;
-        width: 130px;
-        background-color: darkblue;
-        color: white;
+        height: 40px;
+        width: 100%;
+        background-color: #007bff;
+        color: #ffffff;
         font-weight: bold;
-        border-radius: 10px;
-        font-size: 19px;
-        margin-left: 10rem;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+      button:hover {
+        background-color: #0056b3; /* Button hover color */
       }
     </style>
   </head>
@@ -71,50 +75,48 @@
       method="post"
       enctype="multipart/form-data"
     >
-      <div>
-        <label for="">Product Name:</label
-        ><input
-          required
-          type="text"
-          name="Name"
-          placeholder="Name of Your Product"
-        />
-      </div>
-      <div>
-        <label for="">Price:</label>
-        <input
-          required
-          type="number"
-          placeholder="Enter Price in Rupees of Your Product"
-          name="Price"
-        />
-      </div>
-      <div>
-        <label for="">Contact Number:</label>
-        <input
-          required
-          name="Contact_NO"
-          type="string"
-          placeholder="Enter Your Contact Number"
-        />
-      </div>
-      <div>
-        <label for="">Address:</label>
-        <input
-          required
-          name="ADDRESS"
-          type="string"
-          placeholder="Enter Your address"
-        />
-      </div>
+      <label for="name">Product Name:</label>
+      <input
+        required
+        type="text"
+        id="name"
+        name="Name"
+        placeholder="Name of Your Product"
+      />
+
+      <label for="price">Price:</label>
+      <input
+        required
+        type="number"
+        id="price"
+        placeholder="Enter Price in Rupees of Your Product"
+        name="Price"
+      />
+
+      <label for="contact">Contact Number:</label>
+      <input
+        required
+        type="tel"
+        id="contact"
+        name="Contact_NO"
+        placeholder="Enter Your Contact Number"
+      />
+
+      <label for="address">Address:</label>
+      <input
+        required
+        type="text"
+        id="address"
+        name="ADDRESS"
+        placeholder="Enter Your Address"
+      />
+
       <!-- <div>
-        <label for="">Upload Product Image</label
-        ><input type="file" name="productImage" id="image" />
-      </div> -->
-      <button type="submit">submit</button>
+            <label for="image">Upload Product Image</label>
+            <input type="file" id="image" name="productImage" />
+        </div> -->
+
+      <button type="submit">Submit</button>
     </form>
   </body>
-  <script>
-    
-  </script>
 </html>
