@@ -111,12 +111,53 @@ nav{
     padding-right: 1.5rem;
     font-size: 18px;
     background-color: orange;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: Arial, Helvetica, sans-serif;
     border: 1px solid white;
     color: white;
     font-weight: bold;
     border-radius: 4px;
     margin-top: 1rem;
+}
+
+/* about Section*/
+.abt{
+    height: 450px;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: rgb(241, 241, 241);
+    
+}
+#pic{
+  height: 350px;
+  width: 350px;
+  background-image: url(images/about.jpg);
+  background-size: cover;
+  /* border-radius: 50%; */
+  background-position: center;
+  box-shadow: 5px 2px rgb(241, 241, 241);
+
+}
+#txt{
+height: 300px;
+width: 50vw;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content:space-evenly;
+text-align: center;
+}
+#txt h2{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 2rem;
+    text-align: center;
+           
+}
+#txt p{
+    font-size: 22px;
+    word-spacing: 4px;
+    font-family: sans-serif;
 }
 
 /* Hero Portion  */
@@ -141,6 +182,7 @@ nav{
     width: 100vw;
     display: flex;
     justify-content: space-evenly;
+    
 }
 .box1{
     width: 23vw;
@@ -192,6 +234,8 @@ nav{
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
+    background-color: rgb(241, 241, 241);
+
     
 }
 .about h1{
@@ -311,4 +355,130 @@ footer .left{
     justify-content: center;
  
   } */
+}
+
+@media screen and (max-width: 800px) {
+.left{
+     width: 40vw;
+        
+}
+.left h1{
+    font-size: 18px;
+}
+.hero{
+height: 80vh;
+}
+.image{
+    display: none;
+}
+.text{
+    width: 90vw;
+}
+.text p{
+    font-size: 15px;
+}
+.hero h1{
+    margin-bottom: 0.6rem;
+}
+.hero button{
+    height: 30px;
+    width: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+}
+.abt{
+    height: 100vh;
+    flex-direction: column;
+
+}
+#txt{
+    width: 100vw;
+
+}
+#txt h2{
+    font-size: 1.6rem;
+}
+#txt p{
+    font-size: 15px;
+}
+.service{
+    height: max-content;
+    justify-content: center;
+   
+}
+.service h1{
+    font-size: 25px;
+}
+.boxes{
+    flex-direction: column;
+    height: max-content;
+align-items: center;
+
+}
+.box1{
+    width: 80vw;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    
+}
+.box1 h2{
+    font-size: 18px;
+}
+#box2{
+    margin-top: 0;
+}
+.about{
+    height: max-content;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+.about h1{
+    font-size: 22px;
+   
+}
+.about b{
+    font-size: 17px;
+    margin-bottom: 1rem;
+}
+.b1{
+    width: 90vw;
+    margin-bottom: 1rem;
+    flex-direction: column;
+    margin-top: 2rem;
+    height: max-content;
+    font-size: 15px;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+    border: none;
+    /* background-color: antiquewhite; */
+
+}
+
+.b2{
+    flex-direction: column;
+}
+footer{}
+footer .left h1{
+    font-size: 25px;
+}
+footer .right{
+    width: 100vw;
+}
+footer .right ul{
+    width: 100vw;
+}
+footer .right ul button {
+    font-size: 14px;
+}
+.social{
+    width: 60vw;
+}
+.social i{
+  font-size: 25px;  
+}
+.copy{
+    font-size: 12px;
+}
 }
