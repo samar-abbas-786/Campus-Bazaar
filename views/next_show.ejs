@@ -154,7 +154,7 @@
             name.textContent = user.Name;
 
             const price = document.createElement("p");
-            price.textContent = `Price: ${user.Price}`;
+            price.textContent = `Price: ₹${user.Price}`;
 
             const contact = document.createElement("p");
             contact.textContent = `Contact: ${user.Contact_NO}`;
@@ -162,10 +162,18 @@
             const address = document.createElement("p");
             address.textContent = `Address: ${user.ADDRESS}`;
 
+            const seeProductButton = document.createElement("button");
+            seeProductButton.textContent = "See Product";
+            seeProductButton.style.backgroundColor = "orangered";
+            seeProductButton.style.color = "white";
+            seeProductButton.style.padding = "0.2rem";
+            seeProductButton.style.fontSize = "1rem";
+            seeProductButton.style.marginTop = "1rem";
             card.appendChild(name);
             card.appendChild(price);
             card.appendChild(contact);
             card.appendChild(address);
+            card.appendChild(seeProductButton);
 
             listItemDiv.appendChild(card);
           });

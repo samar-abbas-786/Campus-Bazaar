@@ -114,23 +114,10 @@ app.get("/login", (req, res) => {
 app.post("/login", async (req, res) => {
   const { email, password } = req.body;
   const user = await User.findOne({ email });
-
-  if (!user || !(await bcrypt.compare(password, user.password))) {
-    // Invalid email or password
-    return res.render("login");
+  if (!user) return res.redirect("/login");
+  else {
+    res.render("index");
   }
-
-  // Generate a unique session ID
-  const sessionId = uuidv4();
-
-  // Save the session ID associated with the user
-  setuser(sessionId, user);
-
-  // Set the session ID as a cookie
-  res.cookie("uid", sessionId);
-
-  // Redirect the user to the homepage or any other authorized page
-  res.render("add");
 });
 
 app.get("/allProducts", (req, res) => {
@@ -140,7 +127,7 @@ app.get("/signup/get", (req, res) => {
   res.render("signup");
 });
 
-app.get("/add", restrictedToLoggedInUserOnly, (req, res) => {
+app.get("/add", (req, res) => {
   res.render("add");
 });
 app.listen(PORT, () => {
