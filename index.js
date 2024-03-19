@@ -120,6 +120,19 @@ app.post("/login", async (req, res) => {
   }
 });
 
+//DeleteRequest for Product
+
+app.delete("/delete/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+    const deletedUser = await User.findByIdAndDelete(id);
+    res.send(deletedUser);
+  } catch (error) {
+    console.error("Error deleting user:", error);
+    res.status(500).send("Error deleting user");
+  }
+});
+
 app.get("/allProducts", (req, res) => {
   res.render("next_show");
 });

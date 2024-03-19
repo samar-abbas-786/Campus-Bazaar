@@ -164,18 +164,40 @@
 
             const seeProductButton = document.createElement("button");
             seeProductButton.textContent = "See Product";
-            seeProductButton.style.backgroundColor = "orangered";
+            seeProductButton.style.backgroundColor = "green";
             seeProductButton.style.color = "white";
             seeProductButton.style.padding = "0.2rem";
             seeProductButton.style.fontSize = "1rem";
             seeProductButton.style.marginTop = "1rem";
+
+            // delete
+            const delteButton = document.createElement("button");
+            delteButton.textContent = "Delete";
+            delteButton.style.backgroundColor = "red";
+            delteButton.style.color = "white";
+            delteButton.style.padding = "0.2rem";
+            delteButton.style.fontSize = "1rem";
+            delteButton.style.marginTop = "1rem";
+            delteButton.style.marginLeft = "1rem";
+            delteButton.style.paddingLeft = "1rem";
+            delteButton.style.paddingRight = "1rem";
+
             card.appendChild(name);
             card.appendChild(price);
             card.appendChild(contact);
             card.appendChild(address);
             card.appendChild(seeProductButton);
+            card.appendChild(delteButton);
 
             listItemDiv.appendChild(card);
+
+            // seeProductButton.addEventListener("click", (e) => {
+            //   e.preventDefault();
+            //   // Hide the button that was clicked
+            //   // e.target.style.display = "none";
+            //   e.card.style.display = "none";
+            // });
+            delteButton.formAction=""
           });
         })
         .catch((error) => {
