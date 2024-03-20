@@ -14,54 +14,66 @@
     />
   </head>
   <body>
-    <nav>
-      <div class="left">
-        <h1>🛍️UniUnity</h1>
-      </div>
-      <div class="right">
-        <ul>
-          <form action=""><button>Home</button></form>
+    <div class="top">
+      <nav>
+        <div class="left">
+          <h1>🛍️UniUnity</h1>
+        </div>
+        <div class="right">
+          <ul>
+            <form action=""><button>Home</button></form>
 
-          <form action=""><button>About</button></form>
+            <form action=""><button>About</button></form>
 
-          <form action="/add" method="get"><button>Add Product</button></form>
+            <form action="/add" method="get"><button>Add Product</button></form>
 
-          <form action="/allProducts" method="get">
-            <button>All Products</button>
-          </form>
+            <form action="/allProducts" method="get">
+              <button>All Products</button>
+            </form>
 
-          <form action="/signup/get" method="get">
-            <button>Sign up</button>
-          </form>
-        </ul>
-      </div>
-      <div class="cart">
-        <i class="fa-solid fa-cart-shopping fa-xl" style="color: #000000"></i>
-        <p id="count"></p>
-      </div>
-    </nav>
-    <div class="hero">
-      <div class="image1">
-        <img src="/images/college_student.jpeg" alt="" srcset="" />
-      </div>
-      <div class="text">
-        <!-- <div class="same"> -->
-        <h1>Welcome to <span>Uni</span><b>Unity</b></h1>
-        <p>
-          Join us in revolutionizing hostel and college living! Explore our
-          comprehensive range of rentals meticulously crafted to meet your
-          unique needs, whether it's furnishing your living space, upgrading
-          your workspace, or simplifying your daily routine. With our
-          user-friendly platform, renting has never been easier
-        </p>
-        <!-- </div> -->
-        <button>Explore</button>
-      </div>
-      <div class="image">
-        <img src="/images/college_student.jpeg" alt="" srcset="" />
+            <form action="/signup/get" method="get">
+              <button>Sign up</button>
+            </form>
+          </ul>
+        </div>
+        <div class="cart">
+          <i class="fa-solid fa-cart-shopping fa-xl" style="color: #000000"></i>
+          <p id="count"></p>
+        </div>
+      </nav>
+      <div class="hero">
+        <div class="image" style="visibility: none">
+          <img src="/image/college_student.jpeg" alt="" srcset="" />
+        </div>
+        <div class="image1">
+          <img src="/images/college_student.jpeg" alt="" srcset="" />
+        </div>
+        <div class="text" style="margin-bottom: 4rem">
+          <!-- <div class="same"> -->
+          <h1>
+            Welcome to <br /><i style="letter-spacing: 1rem; font-style: normal"
+              ><span>Uni</span><b>Unity</b></i
+            >
+          </h1>
+          <p
+            style="
+              width: auto;
+              padding-left: 3rem;
+              padding-right: 3rem;
+              margin-top: 1rem;
+            "
+          >
+            Join us in revolutionizing hostel and college living! Explore our
+            comprehensive range of rentals meticulously crafted to meet your
+            unique needs, whether it's furnishing your living space, upgrading
+            your workspace, or simplifying your daily routine. With our
+            user-friendly platform, renting has never been easier
+          </p>
+          <!-- </div> -->
+          <button>Explore</button>
+        </div>
       </div>
     </div>
-
     <div class="abt">
       <div id="pic"></div>
       <div id="txt">
