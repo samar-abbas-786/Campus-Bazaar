@@ -22,6 +22,15 @@ mongoose.connect("mongodb://localhost:27017/ADD_PRODUCT").then(() => {
   console.log("MONGODB1 CONNECTED");
 });
 
+const products = [
+  {
+    name: "Dummy",
+    price: "100",
+    contact_no: "0700000000",
+    address: "dummy",
+  },
+];
+
 // MiddleWares
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -133,6 +142,12 @@ app.delete("/delete/:id", async (req, res) => {
   }
 });
 
+app.post("/addToCart", async (req, res) => {
+  const product = await Product.findByOne({ name: req.Name });
+  products.push(product);
+  res.render("cart", { products: products });
+});
+
 app.get("/allProducts", (req, res) => {
   res.render("next_show");
 });
@@ -146,20 +161,3 @@ app.get("/add", (req, res) => {
 app.listen(PORT, () => {
   console.log(`App is running at http://localhost:${PORT}`);
 });
-//Check if Password is Correct
-
-// const isCorrectPassword = await bcrypt.compare(password, user.password);
-// if (!isCorrectPassword) {
-//   res.status(401).send("Invalid password)");
-// }
-// const mySecretKey = process.env.SECRET_KEY;
-// Payload to generate JWT
-
-// const payload = {
-//   name: user.name,
-//   email: user.email,
-//   password: user.password,
-// };
-
-// const token = jwt.sign(payload, mySecretKey, { expiresIn: "5days" });
-// console.log(token);

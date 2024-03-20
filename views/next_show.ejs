@@ -172,28 +172,57 @@
 
             seeProductButton.addEventListener("click", (e) => {
               e.preventDefault();
-              confirm("Do you want to buy this product?");
-              alert(`You  Bought: ${user.Name}`);
+              alert(`You Bought ${user.Name} at ${user.Price}`);
               // alert(`You Have Bought this Product :${user.name}`);
             });
             // delete
-            const delteButton = document.createElement("button");
-            delteButton.textContent = "Delete";
-            delteButton.style.backgroundColor = "red";
-            delteButton.style.color = "white";
-            delteButton.style.padding = "0.2rem";
-            delteButton.style.fontSize = "1rem";
-            delteButton.style.marginTop = "1rem";
-            delteButton.style.marginLeft = "1rem";
-            delteButton.style.paddingLeft = "1rem";
-            delteButton.style.paddingRight = "1rem";
+            const addToCart = document.createElement("button");
+            addToCart.textContent = "Add to Cart";
+            addToCart.style.backgroundColor = "red";
+            addToCart.style.color = "white";
+            addToCart.style.padding = "0.2rem";
+            addToCart.style.fontSize = "1rem";
+            addToCart.style.marginTop = "1rem";
+            addToCart.style.marginLeft = "1rem";
+            addToCart.style.paddingLeft = "1rem";
+            addToCart.style.paddingRight = "1rem";
+            // addToCart.formAction = "/addToCart";
+            // addToCart.formMethod = "POST";
+            // addToCart.formEnctype =
+            //   "application/x-www-form-urlenc/multipart/form";
+            // addToCart.addEventListener("click", () => {
+            //   fetch("/api/addToCart", {
+            //     method: "POST",
+            //     headers: {
+            //       "Content-Type": "application/json",
+            //     },
+            //     body: JSON.stringify({
+            //       name: user.Name,
+            //       price: user.Price,
+            //       contact: user.Contact_NO,
+            //       address: user.ADDRESS,
+            //     }),
+            //   })
+            //     .then((response) => {
+            //       if (!response.ok) {
+            //         throw new Error("Network response was not ok");
+            //       }
+            //       return response.json();
+            //     })
+            //     .then((data) => {
+            //       console.log(data);
+            //     })
+            //     .catch((err) => {
+            //       console.log(err);
+            //     });
+            // });
 
             card.appendChild(name);
             card.appendChild(price);
             card.appendChild(contact);
             card.appendChild(address);
             card.appendChild(seeProductButton);
-            card.appendChild(delteButton);
+            card.appendChild(addToCart);
 
             listItemDiv.appendChild(card);
           });
