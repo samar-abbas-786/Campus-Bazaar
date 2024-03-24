@@ -8,14 +8,14 @@ const bodyParser = require("body-parser");
 const Product = require("./models/productSchema");
 const User = require("./models/userSchema");
 const multer = require("multer");
-const os = require("os");
-const cluster = require("cluster");
-const bcrypt = require("bcrypt");
+// const os = require("os");
+// const cluster = require("cluster");
+// const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
-const { setuser, getuser } = require("./service/auth");
+// const { setuser, getuser } = require("./service/auth");
 const cookieParser = require("cookie-parser");
-const { restrictedToLoggedInUserOnly } = require("./middleware/auth");
+// const { restrictedToLoggedInUserOnly } = require("./middleware/auth");
 // DataBase Connection for ADD_PRODUCT
 
 mongoose.connect("mongodb://localhost:27017/ADD_PRODUCT").then(() => {
@@ -36,6 +36,9 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(cookieParser());
+app.use((req, res, next) => {
+  // console.log(req.headers.authorization);
+});
 
 // View Engine
 app.set("view engine", "ejs");
@@ -100,16 +103,30 @@ app.post("/button", (req, res) => {
 });
 
 //SignUp Post Requuest
-app.post("/signup/user", async (req, res) => {
-  const { Name, email, password } = req.body;
+const signToken = (id) => {
+  return jwt.sign({ id: newUser._id }, process.env.JWT_SECRET_KEY, {
+    expiresIn: process.env.JWT_EXPIRY,
+  });
+};
+app.post("/signup/user", async (req, res, next) => {
+  // const { Name, email, password } = req.body;
 
   try {
-    const newUser = await User.create({ Name, email, password });
+    const newUser = await User.create({
+      name: req.body.name,
+      email: req.body.email,
+      password: req.body.password,
+    });
 
     console.log("New User added:", newUser);
+    const token = signToken(newUser._id);
 
     // Render the signup page
-    res.render("signup");
+    res.status(200).json({
+      status: "success",
+      token,
+      user: newUser,
+    });
   } catch (error) {
     console.error("Error adding new user:", error);
     res.status(500).send("Error adding new user");
@@ -122,11 +139,21 @@ app.get("/login", (req, res) => {
 
 app.post("/login", async (req, res) => {
   const { email, password } = req.body;
-  const user = await User.findOne({ email });
-  if (!user) return res.redirect("/login");
-  else {
-    res.render("index");
+  const user = await User.findOne({ email }).select("+password");
+  console.log(user);
+
+  const correct = await user.correctPassword(password, user.password);
+
+  if (!user || !correct) {
+    return res.status(401).send("Invalid email or password");
   }
+
+  res.status(200).send("User login successfully");
+
+  // if (!user) return res.redirect("/login");
+  // else {
+  //   res.render("index");
+  // }
 });
 
 //DeleteRequest for Product
@@ -147,6 +174,10 @@ app.post("/addToCart", async (req, res) => {
   products.push(product);
   res.render("cart", { products: products });
 });
+
+app.post("/protect", ()=>{
+  
+})
 
 app.get("/allProducts", (req, res) => {
   res.render("next_show");
