@@ -36,9 +36,9 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(cookieParser());
-app.use((req, res, next) => {
-  // console.log(req.headers.authorization);
-});
+// app.use((req, res, next) => {
+//   // console.log(req.headers.authorization);
+// });
 
 // View Engine
 app.set("view engine", "ejs");
@@ -103,23 +103,24 @@ app.post("/button", (req, res) => {
 });
 
 //SignUp Post Requuest
-const signToken = (id) => {
-  return jwt.sign({ id: newUser._id }, process.env.JWT_SECRET_KEY, {
-    expiresIn: process.env.JWT_EXPIRY,
-  });
-};
+// const signToken = (id) => {
+//   return;
+// };
 app.post("/signup/user", async (req, res, next) => {
   // const { Name, email, password } = req.body;
+  console.log(req.body);
 
   try {
     const newUser = await User.create({
-      name: req.body.name,
+      Name: req.body.Name,
       email: req.body.email,
       password: req.body.password,
     });
 
-    console.log("New User added:", newUser);
-    const token = signToken(newUser._id);
+    // console.log("New User added:", newUser);
+    const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET_KEY, {
+      expiresIn: process.env.JWT_EXPIRY,
+    });
 
     // Render the signup page
     res.status(200).json({
@@ -142,9 +143,9 @@ app.post("/login", async (req, res) => {
   const user = await User.findOne({ email }).select("+password");
   console.log(user);
 
-  const correct = await user.correctPassword(password, user.password);
+  // const correct = await user.correctPassword(password, user.password);
 
-  if (!user || !correct) {
+  if (!user || !user.correctPassword(password, user.password)) {
     return res.status(401).send("Invalid email or password");
   }
 
@@ -175,9 +176,9 @@ app.post("/addToCart", async (req, res) => {
   res.render("cart", { products: products });
 });
 
-app.post("/protect", ()=>{
-  
-})
+// app.post("/protect", ()=>{
+
+// })
 
 app.get("/allProducts", (req, res) => {
   res.render("next_show");

@@ -18,6 +18,7 @@ const userSchema = new mongoose.Schema({
 userSchema.pre("save", async function (next) {
   if (!this.isModified("password")) return next();
   this.password = await bcrypt.hash(this.password, 12);
+  // console.log("this.password :" + this.password);
 });
 userSchema.methods.correctPassword = async function (
   candidatePassword,
@@ -28,3 +29,4 @@ userSchema.methods.correctPassword = async function (
 
 const User = mongoose.model("User", userSchema);
 module.exports = User;
+// vgcgcgggc
