@@ -8,6 +8,7 @@ const bodyParser = require("body-parser");
 const Product = require("./models/productSchema");
 const User = require("./models/userSchema");
 const multer = require("multer");
+const auth = require("./middleware/auth");
 // const os = require("os");
 // const cluster = require("cluster");
 // const bcrypt = require("bcrypt");
@@ -101,7 +102,6 @@ app.get("/api/user", async (req, res) => {
 app.post("/button", (req, res) => {
   res.render("home");
 });
-
 //SignUp Post Requuest
 // const signToken = (id) => {
 //   return;
@@ -157,6 +157,22 @@ app.post("/login", async (req, res) => {
   // }
 });
 
+// async function protect(req, res, next) {
+//   let token;
+
+//   if (
+//     req.headers.Authorization &&
+//     req.headers.Authorization.startsWith("samar")
+//   ) {
+//     token = req.headers.Authorization.split(" ")[1];
+//   }
+//   if (!token) {
+//     return res.status(403).send("Access denied");
+//   }
+//   console.log(token);
+//   next();
+// }
+
 //DeleteRequest for Product
 
 app.delete("/delete/:id", async (req, res) => {
@@ -187,7 +203,7 @@ app.get("/signup/get", (req, res) => {
   res.render("signup");
 });
 
-app.get("/add", (req, res) => {
+app.get("/add", auth.protect, (req, res) => {
   res.render("add");
 });
 app.listen(PORT, () => {

@@ -1,14 +1,17 @@
-const { getUser } = require("../service/auth");
+async function protect(req, res, next) {
+  let token;
 
-async function restrictedToLoggedInUserOnly(req, res, next) {
-  const userUid = req.cookies.uid;
-  if (!userUid) return res.redirect("/login");
-
-  const user = await getUser(userUid);
-  if (!user) return res.redirect("/login");
-
-  req.user = user;
+  if (
+    req.headers.Authorization &&
+    req.headers.Authorization.startsWith("samar")
+  ) {
+    token = req.headers.Authorization.split(" ")[1];
+  }
+  if (!token) {
+    return res.status(403).send("Access denied");
+  }
+  console.log(token);
   next();
 }
 
-module.exports = { restrictedToLoggedInUserOnly };
+module.exports = { protect };
