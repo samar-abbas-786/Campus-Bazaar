@@ -63,11 +63,11 @@ app.post("/upload", upload.single("productImage"), async (req, res) => {
   //   return res.status(400).send("No file uploaded.");
   // }
 
-  const { Name, Price, date, Contact_NO, ADDRESS } = req.body;
+  const { name, Price, date, Contact_NO, ADDRESS } = req.body;
 
   try {
     const newItem = await Product.create({
-      Name,
+      name,
       Price,
       date,
       Contact_NO,
@@ -107,12 +107,12 @@ app.post("/button", (req, res) => {
 //   return;
 // };
 app.post("/signup/user", async (req, res, next) => {
-  // const { Name, email, password } = req.body;
+  // const { name, email, password } = req.body;
   console.log(req.body);
 
   try {
     const newUser = await User.create({
-      Name: req.body.Name,
+      name: req.body.name,
       email: req.body.email,
       password: req.body.password,
     });
@@ -186,18 +186,19 @@ app.delete("/delete/:id", async (req, res) => {
   }
 });
 
-app.post("/addToCart", async (req, res) => {
-  const product = await Product.findByOne({ name: req.Name });
-  products.push(product);
-  res.render("cart", { products: products });
-});
+// app.post("/addToCart", async (req, res) => {
+//   const product = await Product.findByOne({ name: req.name });
+//   products.push(product);
+//   res.render("cart", { products: products });
+// });
 
 // app.post("/protect", ()=>{
 
 // })
 
 app.get("/allProducts", (req, res) => {
-  res.render("next_show");
+  const products = Product.find();
+  res.render("next_show", { products: products });
 });
 app.get("/signup/get", (req, res) => {
   res.render("signup");

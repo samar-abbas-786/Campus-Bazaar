@@ -9,9 +9,11 @@
     height: 100vh;
     width: 100vw;
     /* z-index: -1; */
-    background-image: url(images/hero.avif);
+    /* background-image: url(images/hero.avif); */
+    /* background-color: linear-gradien('black'); */
     background-size: cover;
     background-position: center;
+    background-color: rgb(238, 195, 238);
 }
 nav{
     height: 80px;
@@ -22,7 +24,7 @@ nav{
     justify-content: space-between;
     padding-right: 2rem;
     padding-left: 1rem;
-    /* background-color: rgb(241, 241, 241); */
+    background-color: rgb(255, 255, 255);
 }
 .left{
     width: 15vw;
@@ -30,6 +32,7 @@ nav{
     font-family: sans-serif;
     display: flex;
     align-items: center;
+    font-size: 1.2rem;
 }
 .right{
     width: 70vw;
@@ -48,6 +51,13 @@ nav{
     background-color: transparent;
     border: none;
     font-size: 16.5px;
+    font-weight: 540;
+    
+}
+.right button:hover{
+    border-bottom: 2px solid rgb(100, 99, 99);
+    color: rgb(100, 99, 99);
+    
 }
 .cart{
     display: flex;
@@ -70,7 +80,7 @@ nav{
     align-items: center;
 }
 .text{
-    width: 55vw;
+    width: 95vw;
     height: 40vh;
     display: flex;
     justify-content: space-evenly;
@@ -82,12 +92,17 @@ nav{
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 3rem;
     text-align: center;
-
+    
+}
+#bar{
+    display: none;
 }
 .text p{
-    font-size: 17px;
-    word-spacing: 2px;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    width: auto;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    margin-top: 1rem;
+    font-family: Arial, Helvetica, sans-serif;
 }
 .text span{
     color: rgb(44, 109, 179);
@@ -96,37 +111,25 @@ nav{
 .text b{
     color: orange;
 }
-.image{
-    height: 50vh;
-    width: 46vw;
-    display: flex;
-    justify-content: center;
-    
-}
-.image img{
-    border-radius: 50%;
-}
-.image1{
-    height: 50vh;
-    width: 46vw;
-    display: flex;
-    justify-content: center;
-    display: none;
-    
-}
+
 .hero button{
-    height: 30px;
+    height:auto;
     width: auto;
     padding-left: 1.5rem;
     padding-right: 1.5rem;
-    font-size: 18px;
-    background-color: orange;
+    padding-top:  0.25rem;
+    padding-bottom: 0.25rem;
+    font-size: 17px;
+    background-color: rgb(21, 21, 20);
     font-family: Arial, Helvetica, sans-serif;
-    border: 1px solid white;
     color: white;
     font-weight: bold;
-    border-radius: 4px;
     margin-top: 1rem;
+}
+.hero button:hover{
+    background-color: rgb(242, 241, 241);
+    border: 2px solid black;
+    color :black;
 }
 
 /* about Section*/
@@ -136,13 +139,14 @@ nav{
     display: flex;
     align-items: center;
     justify-content: space-around;
-    background-color: rgb(241, 241, 241);
+    border-top: 4px solid black;
+    /* background-color: rgb(241, 241, 241); */
     
 }
 #pic{
   height: 350px;
-  width: 350px;
-  background-image: url(images/about.jpg);
+  width: 450px;
+  background-image: url(images/ai_about.webp);
   background-size: cover;
   /* border-radius: 50%; */
   background-position: center;
@@ -165,7 +169,7 @@ text-align: center;
            
 }
 #txt p{
-    font-size: 22px;
+    font-size: 17px;
     word-spacing: 4px;
     font-family: sans-serif;
 }
@@ -369,24 +373,39 @@ footer .left{
 }
 
 @media screen and (max-width: 800px) {
+    nav{
+        height: 50px;
+    }
 .left{
      width: 40vw;
         
 }
 .left h1{
-    font-size: 18px;
+    font-size: 23px;
 }
 .hero{
 height: 80vh;
 }
-.image{
+#bar{
+    display: block;
+}
+#cart{
+    display: none;
+}
+.cart p{
     display: none;
 }
 .text{
-    width: 90vw;
+    padding: 0;
+}
+.hero .text h1{
+    font-size: 35px;
 }
 .text p{
-    font-size: 15px;
+    font-size: 12px;
+    width: 90vw;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
 }
 .hero h1{
     margin-bottom: 0.6rem;
@@ -404,6 +423,10 @@ height: 80vh;
     flex-direction: column;
 
 }
+#pic{
+    width: 320px;
+    height: 300px;
+}
 #txt{
     width: 100vw;
 
@@ -412,7 +435,7 @@ height: 80vh;
     font-size: 1.6rem;
 }
 #txt p{
-    font-size: 15px;
+    font-size: 14px;
 }
 .service{
     height: max-content;
