@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    
 }
 .top{
     margin: 0;
@@ -13,10 +14,10 @@
     /* background-color: linear-gradien('black'); */
     background-size: cover;
     background-position: center;
-    background-color: rgb(238, 195, 238);
+    background-color: #B4BDFF;
 }
 nav{
-    height: 80px;
+    height: 70px;
     width: 100vw;
     /* box-shadow: 1px 1.5px rgb(189, 186, 186); */
     display: flex;
@@ -24,7 +25,7 @@ nav{
     justify-content: space-between;
     padding-right: 2rem;
     padding-left: 1rem;
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(0, 0, 0);
 }
 .left{
     width: 15vw;
@@ -33,6 +34,7 @@ nav{
     display: flex;
     align-items: center;
     font-size: 1.2rem;
+    color: white;
 }
 .right{
     width: 70vw;
@@ -46,12 +48,15 @@ nav{
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+
 }
 .right button{
     background-color: transparent;
     border: none;
     font-size: 16.5px;
     font-weight: 540;
+    color: white;
+
     
 }
 .right button:hover{
@@ -139,7 +144,7 @@ nav{
     display: flex;
     align-items: center;
     justify-content: space-around;
-    border-top: 4px solid black;
+    /* border-top: 4px solid black; */
     /* background-color: rgb(241, 241, 241); */
     
 }
