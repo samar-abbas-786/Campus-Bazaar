@@ -43,9 +43,31 @@
             style="color: #ffffff"
           ></i>
           <p id="count"></p>
-          <i id="bar" class="fa-solid fa-bars fa-xl" style="color: #ffffff"></i>
+          <i
+            onclick="side()"
+            id="bar"
+            class="fa-solid fa-bars fa-xl"
+            style="color: #ffffff"
+          ></i>
         </div>
       </nav>
+      <div class="sidebar">
+        <ul>
+          <form action=""><button>Home</button></form>
+
+          <form action=""><button>About</button></form>
+
+          <form action="/add" method="get"><button>Add Product</button></form>
+
+          <form action="/allProducts" method="get">
+            <button>All Products</button>
+          </form>
+
+          <form action="/signup/get" method="get">
+            <button>Sign up</button>
+          </form>
+        </ul>
+      </div>
       <div class="hero">
         <div class="text" style="margin-bottom: 4rem">
           <h1>
@@ -194,5 +216,15 @@
   <script>
     const count = document.getElementById("count");
     count.innerHTML = 0;
+
+    function side() {
+      // const bar = document.getElementById("bar");
+      const side = document.getElementsByClassName("sidebar")[0];
+      if (side.style.display === "none") {
+        side.style.display = "block";
+      } else {
+        side.style.display = "none";
+      }
+    }
   </script>
 </html>
