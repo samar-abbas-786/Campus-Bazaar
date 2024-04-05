@@ -14,7 +14,9 @@
     /* background-color: linear-gradien('black'); */
     background-size: cover;
     background-position: center;
-    background-color: #B4BDFF;
+    background-color: #C9CBFF;
+    /* background-color: #B4BDFF; */
+
 }
 nav{
     height: 70px;
@@ -214,7 +216,7 @@ text-align: center;
     align-items: center;
     justify-content: space-evenly;
     font-family: sans-serif;
-    box-shadow: 4px 2px rgb(173, 170, 170);
+    box-shadow: 4px 2px rgb(0, 0, 0);
 }
 .box1 p{
     font-size: 17px;
@@ -253,8 +255,7 @@ text-align: center;
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-    background-color: rgb(241, 241, 241);
-
+  background-color: #C9CBFF;
     
 }
 .about h1{
@@ -293,7 +294,7 @@ text-align: center;
 footer{
     height: 50vh;
     width: 100vw;
-    /* background-color: #0C2D57; */
+    background-color: #000000;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -318,7 +319,7 @@ footer .left{
    
 }
 .social i{
-  /* color: rgb(247, 247, 247); */
+  color: rgb(247, 247, 247);
 }
 .social i:hover{
     color: rgb(59, 55, 55);
@@ -334,6 +335,9 @@ footer .left{
     align-items: center;
     font-size: 14px;
     font-family: Arial, Helvetica, sans-serif;
+    color: rgb(247, 247, 247);
+    background-color: #000000;
+
 }
 
 /* Responsive Web design */
@@ -426,6 +430,8 @@ height: 80vh;
 .abt{
     height: 100vh;
     flex-direction: column;
+    padding-top: 1.4rem;
+    background-color: #C9CBFF;
 
 }
 #pic{
@@ -445,6 +451,7 @@ height: 80vh;
 .service{
     height: max-content;
     justify-content: center;
+    background-color: #C9CBFF;
    
 }
 .service h1{
@@ -498,7 +505,6 @@ align-items: center;
 .b2{
     flex-direction: column;
 }
-footer{}
 footer .left h1{
     font-size: 25px;
 }
