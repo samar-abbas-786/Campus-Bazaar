@@ -207,7 +207,7 @@ app.get("/home", (req, res) => {
   res.render("index");
 });
 
-app.get("/add", auth.protect, (req, res) => {
+app.get("/add", (req, res) => {
   res.render("add");
 });
 app.listen(PORT, () => {
