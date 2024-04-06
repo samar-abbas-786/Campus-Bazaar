@@ -19,7 +19,7 @@ const cookieParser = require("cookie-parser");
 // const { restrictedToLoggedInUserOnly } = require("./middleware/auth");
 // DataBase Connection for ADD_PRODUCT
 
-mongoose.connect("mongodb://localhost:27017/ADD_PRODUCT").then(() => {
+mongoose.connect(process.env.MONGO_URI).then(() => {
   console.log("MONGODB1 CONNECTED");
 });
 
@@ -63,11 +63,11 @@ app.post("/upload", upload.single("productImage"), async (req, res) => {
   //   return res.status(400).send("No file uploaded.");
   // }
 
-  const { name, Price, date, Contact_NO, ADDRESS } = req.body;
+  const { Name, Price, date, Contact_NO, ADDRESS } = req.body;
 
   try {
     const newItem = await Product.create({
-      name,
+      Name,
       Price,
       date,
       Contact_NO,
