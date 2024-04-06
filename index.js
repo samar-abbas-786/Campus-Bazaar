@@ -203,6 +203,9 @@ app.get("/allProducts", (req, res) => {
 app.get("/signup/get", (req, res) => {
   res.render("signup");
 });
+app.get("/home", (req, res) => {
+  res.render("index");
+});
 
 app.get("/add", auth.protect, (req, res) => {
   res.render("add");
