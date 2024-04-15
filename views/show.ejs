@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="show.css" />
+
+    <title></title>
+  </head>
+  <body>
+    <%- include ('nav.ejs') %>
+
+    <div class="main">
+      <div class="all-products"
+        <div class="single-product">
+          <button onclick="getData()"></button>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+  getData=async()=> {
+const response= await fetch('/api/user').then(response=>response.json())
+for(i=0;i<response.length;i++) {
+  console.log(i)
+console.log(response[i].Name)
+
+}
+}
+
+  </script>
+</html>

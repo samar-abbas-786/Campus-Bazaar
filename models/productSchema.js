@@ -1,38 +1,36 @@
 const mongoose = require("mongoose");
-// const bcrypt = require("bcrypt");
+
 const productSchema = new mongoose.Schema({
   Name: {
     type: String,
-    require: true,
+    required: true,
   },
   Price: {
     type: Number,
-    require: [true, "Please provide the price"],
+    required: [true, "Please provide the price"],
   },
   Contact_NO: {
-    type: String,
-    require: true,
+    type: Number,
+    required: true,
   },
   productImage: {
     type: String,
+    required: [true, "Please provide the product image"],
   },
   ADDRESS: {
     type: String,
-    require: true,
+    required: true,
   },
-  expired:{
-    type:Boolean,
-    default:false,
+  expired: {
+    type: Boolean,
+    default: false,
   },
-  cretedAt: {
+  createdAt: {
     type: Date,
     default: Date.now,
   },
 });
 
-// productSchema.pre("save", async function (next) {
-//   if (!this.isModified("ADDRESS")) return next();
-//   this.ADDRESS = await bcrypt.hash(this.ADDRESS, 12);
-// });
 const Product = mongoose.model("Product", productSchema);
+
 module.exports = Product;

@@ -23,59 +23,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
   </head>
   <body>
-      <nav id="nav">
-        <div class="left">
-          <h1>🛍️UniUnity</h1>
-        </div>
-        <div class="right">
-          <ul>
-            <form action="/home" method="get"><button>Home</button></form>
-
-            <form action=""><button>About</button></form>
-
-            <form action="/add" method="get"><button>Add Product</button></form>
-
-            <form action="/allProducts" method="get">
-              <button>All Products</button>
-            </form>
-
-            <form action="/signup/get" method="get">
-              <button>Sign up</button>
-            </form>
-          </ul>
-        </div>
-        <div class="cart">
-          <i
-            id="cart"
-            class="fa-solid fa-cart-shopping fa-xl"
-            style="color: #262626"
-          ></i>
-          <p id="count"></p>
-          <i
-            onclick="side()"
-            id="bar"
-            class="fa-solid fa-bars fa-2xl"
-            style="color: #262626"
-          ></i>
-        </div>
-      </nav>
-      <div class="sidebar">
-        <ul>
-          <form action=""><button>Home</button></form>
-
-          <form action=""><button>About</button></form>
-
-          <form action="/add" method="get"><button>Add Product</button></form>
-
-          <form action="/allProducts" method="get">
-            <button>All Products</button>
-          </form>
-
-          <form action="/signup/get" method="get">
-            <button>Sign up</button>
-          </form>
-        </ul>
-      </div>
+     <%-include('nav.ejs') %>
       <div class="hero">
         <div class="text" style="margin-bottom: 4rem">
           <h1>

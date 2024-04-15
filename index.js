@@ -48,7 +48,7 @@ app.set("views", path.resolve("./views"));
 // Multer Setup
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, "uploads/");
+    cb(null, "uploads");
   },
   filename: function (req, file, cb) {
     cb(null, Date.now() + path.extname(file.originalname));
@@ -58,27 +58,20 @@ const upload = multer({ storage: storage });
 
 // upload and create a new item
 app.post("/upload", upload.single("productImage"), async (req, res) => {
-  console.log("req.file:", req.file);
-  // if (!req.file) {
-  //   return res.status(400).send("No file uploaded.");
-  // }
-
-  const { Name, Price, date, Contact_NO, ADDRESS } = req.body;
-
+  const { Name, Price, Contact_NO, ADDRESS } = req.body;
   try {
-    const newItem = await Product.create({
+    const newItem = new Product({
       Name,
       Price,
-      date,
       Contact_NO,
       ADDRESS,
-      // productImage: req.file.filename, // Corrected to use req.file.filename
+      productImage: req.file.filename,
     });
+    await newItem.save();
+    res.status(201).json(" file uploaded successfully .");
     console.log("New item added:", newItem);
 
-    res.render("next_show", {
-      newItem: newItem,
-    });
+    res.render("show");
   } catch (error) {
     console.error("Error adding new item:", error);
     res.status(500).send("Error adding new item");
@@ -91,7 +84,7 @@ app.get("/", (req, res) => {
 
 app.get("/api/user", async (req, res) => {
   try {
-    const users = await Product.find({ expired: true });
+    const users = await Product.find({ expired: false });
     res.send(users);
   } catch (error) {
     console.error("Error fetching users:", error);
@@ -198,7 +191,7 @@ app.delete("/delete/:id", async (req, res) => {
 
 app.get("/allProducts", (req, res) => {
   const products = Product.find();
-  res.render("next_show", { products: products });
+  res.render("show", { products: products });
 });
 app.get("/signup/get", (req, res) => {
   res.render("signup");
