@@ -14,10 +14,7 @@ const auth = require("./middleware/auth");
 // const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
-// const { setuser, getuser } = require("./service/auth");
 const cookieParser = require("cookie-parser");
-// const { restrictedToLoggedInUserOnly } = require("./middleware/auth");
-// DataBase Connection for ADD_PRODUCT
 
 mongoose.connect(process.env.MONGO_URI).then(() => {
   console.log("MONGODB1 CONNECTED");
@@ -29,6 +26,7 @@ const products = [
     price: "100",
     contact_no: "0700000000",
     address: "dummy",
+    image: "samar.jpg",
   },
 ];
 
@@ -37,9 +35,7 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(cookieParser());
-// app.use((req, res, next) => {
-//   // console.log(req.headers.authorization);
-// });
+app.use(express.static("uploads"));
 
 // View Engine
 app.set("view engine", "ejs");
@@ -85,7 +81,7 @@ app.get("/", (req, res) => {
 app.get("/api/user", async (req, res) => {
   try {
     const products = await Product.find({ expired: false });
-    res.render("show", { products: products });
+    res.send(products);
   } catch (error) {
     console.error("Error fetching users:", error);
     res.status(500).send("Error fetching users");
@@ -95,14 +91,8 @@ app.get("/api/user", async (req, res) => {
 app.post("/button", (req, res) => {
   res.render("home");
 });
-//SignUp Post Requuest
-// const signToken = (id) => {
-//   return;
-// };
-app.post("/signup/user", async (req, res, next) => {
-  // const { name, email, password } = req.body;
-  console.log(req.body);
 
+app.post("/signup/user", async (req, res, next) => {
   try {
     const newUser = await User.create({
       name: req.body.name,
@@ -141,30 +131,8 @@ app.post("/login", async (req, res) => {
   if (!user || !user.correctPassword(password, user.password)) {
     return res.status(401).send("Invalid email or password");
   }
-
   res.status(200).send("User login successfully");
-
-  // if (!user) return res.redirect("/login");
-  // else {
-  //   res.render("index");
-  // }
 });
-
-// async function protect(req, res, next) {
-//   let token;
-
-//   if (
-//     req.headers.Authorization &&
-//     req.headers.Authorization.startsWith("samar")
-//   ) {
-//     token = req.headers.Authorization.split(" ")[1];
-//   }
-//   if (!token) {
-//     return res.status(403).send("Access denied");
-//   }
-//   console.log(token);
-//   next();
-// }
 
 //DeleteRequest for Product
 
@@ -179,19 +147,9 @@ app.delete("/delete/:id", async (req, res) => {
   }
 });
 
-// app.post("/addToCart", async (req, res) => {
-//   const product = await Product.findByOne({ name: req.name });
-//   products.push(product);
-//   res.render("cart", { products: products });
-// });
-
-// app.post("/protect", ()=>{
-
-// })
-
 app.get("/allProducts", (req, res) => {
   const products = Product.find();
-  res.render("show", { products: products });
+  res.render("show", { products });
 });
 app.get("/signup/get", (req, res) => {
   res.render("signup");

@@ -6,20 +6,42 @@
     <title>Products</title>
   </head>
   <body>
-    <% include ('nav.ejs') %>
-
+    <% include('nav.ejs') %>
+   
     <div class="main">
       <div class="all-products">
-        <% products.forEach(product => { %>
         <div class="single-product">
+          <img id="image" src="" alt="" srcset="">
           <div class="product-details">
-            <h2><%= product.Name %></h2>
-            <img src="<%= product.productImage %>" />
-            <!-- Assuming product.productImage contains the URL or path to the image -->
-          </div>
+            <h3 id="name"></h3>
+            <p id="price"></p>
+          
+  
+
         </div>
-        <% }) %>
       </div>
     </div>
   </body>
+  <script>
+    getData = async () => {
+      const response = await fetch("/api/user");
+      const htmlContent = await response.json(); // Get the HTML content
+      console.log(htmlContent);
+
+for(i=0;i<htmlContent.length;i++) {
+
+         console.log(i);
+         console.log(htmlContent[i].Name);
+         console.log(htmlContent[i].Price);
+        document.getElementById("name").innerHTML = htmlContent[i].Name;
+        document.getElementById("price").innerHTML = htmlContent[i].Price;
+        document.getElementById("image").src = "/uploads/"+htmlContent[i].productImage;
+}
+  
+    }
+
+    window.onload = () => {
+      getData();
+    };
+  </script>
 </html>
