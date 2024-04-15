@@ -84,8 +84,8 @@ app.get("/", (req, res) => {
 
 app.get("/api/user", async (req, res) => {
   try {
-    const users = await Product.find({ expired: false });
-    res.send(users);
+    const products = await Product.find({ expired: false });
+    res.render("show", { products: products });
   } catch (error) {
     console.error("Error fetching users:", error);
     res.status(500).send("Error fetching users");
