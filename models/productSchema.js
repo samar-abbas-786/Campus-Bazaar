@@ -7,21 +7,29 @@ const productSchema = new mongoose.Schema({
   },
   Price: {
     type: Number,
-    require: true,
+    require: [true, "Please provide the price"],
   },
   Contact_NO: {
     type: String,
     require: true,
   },
-  // productImage: {
-  //   type: String,
-  //   require: true,
-  // },
+  productImage: {
+    type: String,
+  },
   ADDRESS: {
     type: String,
     require: true,
   },
+  expired:{
+    type:Boolean,
+    default:false,
+  },
+  cretedAt: {
+    type: Date,
+    default: Date.now,
+  },
 });
+
 // productSchema.pre("save", async function (next) {
 //   if (!this.isModified("ADDRESS")) return next();
 //   this.ADDRESS = await bcrypt.hash(this.ADDRESS, 12);

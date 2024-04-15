@@ -12,10 +12,18 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
   </head>
   <body>
-    <div class="top">
-      <nav>
+      <nav id="nav">
         <div class="left">
           <h1>🛍️UniUnity</h1>
         </div>
@@ -40,14 +48,14 @@
           <i
             id="cart"
             class="fa-solid fa-cart-shopping fa-xl"
-            style="color: #ffffff"
+            style="color: #262626"
           ></i>
           <p id="count"></p>
           <i
             onclick="side()"
             id="bar"
-            class="fa-solid fa-bars fa-xl"
-            style="color: #ffffff"
+            class="fa-solid fa-bars fa-2xl"
+            style="color: #262626"
           ></i>
         </div>
       </nav>
@@ -77,31 +85,44 @@
             >
           </h1>
           <p>
-            Join us in revolutionizing hostel and college living! Explore our
-            comprehensive range of rentals meticulously crafted to meet your
-            unique needs, whether it's furnishing your living space, upgrading
-            your workspace, or simplifying your daily routine. With our
-            user-friendly platform, renting has never been easier
+            Revolutionize hostel and college living with our diverse rentals. Furnish your space, upgrade your workspace, simplify your routine. Easy renting with our user-friendly platform
           </p>
           <!-- </div> -->
-          <button>Explore</button>
+          <button>Explore  <i class="fa-solid fa-angles-right fa-lg" style="color: #ffffff;"></i></button>
+        </div>
+        <div class="home-pic">
+          <div class="out">
+          <img src="/images/new_college.jpg" alt="image">
+        </div>
         </div>
       </div>
     </div>
     <div class="abt">
       <div id="pic"></div>
+
       <div id="txt">
-        <h2>About</h2>
+        <h2 style="margin: auto; margin-bottom: 0;margin-top: 0;">About</h2>
+
         <p>
-          Welcome to UniUnity, the go-to hub for hostel and college students to
-          rent, buy, and sell items essential to their campus life. Our platform
-          is designed with students in mind, offering a convenient and
-          affordable solution to meet their accommodation and academic needs.
-          Whether you're in search of textbooks, electronics, furniture, or
-          looking to declutter and earn some extra cash, UniUnity provides a
-          seamless experience for connecting students with the items they need.
-          Join our community today and simplify your college experience with
-          UniUnity.
+          <i class="fa-solid fa-check fa-xl" style="color: #35af08;"></i>
+           UniUnity: The ultimate hub for hostel and college students.
+        </p>
+        <p>
+          <i class="fa-solid fa-check fa-xl" style="color: #35af08;"></i>
+          Rent, buy, or sell textbooks, electronics, furniture, and more effortlessly.
+        </p>
+        <p>
+          <i class="fa-solid fa-check fa-xl" style="color: #35af08;"></i>
+          Simplify your college experience with our convenient platform.
+        </p>
+        <p>
+          <i class="fa-solid fa-check fa-xl" style="color: #35af08;"></i>
+          Join our vibrant community and make UniUnity your go-to for all campus needs.
+
+
+
+
+
         </p>
       </div>
     </div>
@@ -116,12 +137,7 @@
           ></i>
           <h2>On Rent</h2>
           <p>
-            Catering exclusively to hostel and college staff, our platform
-            offers a straightforward solution: renting. From textbooks to tech
-            gadgets, we've got you covered with a wide array of items available
-            for short-term or long-term rental. Skip the hassle of buying and
-            enjoy the flexibility of temporary ownership. Rent smarter, live
-            better.
+            Upgrade your workspace without the commitment. Renting made easy for hostel and college staff
           </p>
           <button>Know More</button>
         </div>
@@ -132,12 +148,7 @@
           ></i>
           <h2>Sell Your Items</h2>
           <p>
-            In addition to offering convenient rentals, we also provide a
-            platform for selling items, empowering users to declutter and earn
-            extra income effortlessly. Whether you're a student looking to
-            offload textbooks at the end of the semester or a staff member with
-            unused items to spare, our website offers a seamless selling
-            experience.
+            Easily declutter and earn with our selling platform: students sell textbooks, staff sell unused items, all made effortless.
           </p>
           <button>Know More</button>
         </div>
@@ -145,12 +156,7 @@
           <i class="fa-brands fa-shopify fa-2xl" style="color: #000000"></i>
           <h2>Buy</h2>
           <p>
-            we offer an extensive selection of items to cater to your needs.
-            Whether you're a student stocking up for the semester or a staff
-            member looking to upgrade your space, our platform makes shopping
-            easy and convenient. Browse our inventory, compare prices, and enjoy
-            the convenience of doorstep delivery. Find what you need and make it
-            yours with just a few clicks
+            Shop effortlessly for all your needs: students prep for the semester, staff upgrade spaces, with easy browsing, comparison, and doorstep delivery
           </p>
           <button>Know More</button>
         </div>
@@ -221,6 +227,11 @@
     <div class="copy">&copy;Copyright 2024 by UniUnity.All rightd reserved</div>
   </body>
   <script>
+    const nav = document.getElementById("nav");
+    if (nav.style.marginTop == "20px") {
+      nav.style.position = "fixed";
+    }
+
     const count = document.getElementById("count");
     count.innerHTML = 0;
 
