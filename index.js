@@ -20,15 +20,15 @@ mongoose.connect(process.env.MONGO_URI).then(() => {
   console.log("MONGODB1 CONNECTED");
 });
 
-const products = [
-  {
-    name: "Dummy",
-    price: "100",
-    contact_no: "0700000000",
-    address: "dummy",
-    image: "samar.jpg",
-  },
-];
+// const products = [
+//   {
+//     name: "Dummy",
+//     price: "100",
+//     contact_no: "0700000000",
+//     address: "dummy",
+//     image: "samar.jpg",
+//   },
+// ];
 
 // MiddleWares
 app.use(express.json());
