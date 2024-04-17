@@ -67,7 +67,7 @@ app.post("/upload", upload.single("productImage"), async (req, res) => {
     res.status(201).json(" file uploaded successfully .");
     console.log("New item added:", newItem);
 
-    res.render("show");
+    await res.render("show");
   } catch (error) {
     console.error("Error adding new item:", error);
     res.status(500).send("Error adding new item");
@@ -80,11 +80,13 @@ app.get("/", (req, res) => {
 
 app.get("/api/user", async (req, res) => {
   try {
-    const products = await Product.find({ expired: false });
-    res.send(products);
+    const products = await Product.find({});
+
+    // Render the 'show' EJS template and pass the products array to it
+    await res.render("show", { products: products });
   } catch (error) {
-    console.error("Error fetching users:", error);
-    res.status(500).send("Error fetching users");
+    console.error("Error fetching products:", error);
+    res.status(500).send("Error fetching products");
   }
 });
 
@@ -149,7 +151,7 @@ app.delete("/delete/:id", async (req, res) => {
 
 app.get("/allProducts", (req, res) => {
   const products = Product.find();
-  res.render("show", { products });
+  res.render("show", { products: products });
 });
 app.get("/signup/get", (req, res) => {
   res.render("signup");
