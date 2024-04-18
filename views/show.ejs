@@ -1,42 +1,28 @@
-
-
-
 <!-- <script src="show.js"></script> -->
-<link rel="stylesheet" href="style.css">
-    <%-include('nav.ejs') %>
-   <body>
-    <div class="main">
-      <div class="all-products">
-        <div class="single-product">
-          <img id="image" src="" alt="" srcset="">
-          <div class="product-details">
-            <h3 id="name"></h3>
-            <p id="price"></p>
-  
+<link rel="stylesheet" href="show.css" />
+<link rel="stylesheet" href="style.css" />
+<%-include('nav.ejs') %>
+<body>
+  <div class="top">
+   
+  <% products.forEach(product => { %>
+  <div class="all-products">
+    <div class="single-product">
+      <img
+        id="image"
+        src="/<%= product.productImage %>"
+        alt="<%= product.Name %>"
+        srcset=""
+        width="200"
+      />
 
-        </div>
+      <div class="product-details">
+        <h1 id="name"><%= product.Name %></h1>
+        <h3 id="price">₹<%= product.Price %></h2>
       </div>
     </div>
-    <button>showwertyuikuyjthgdf</button>
+  </div>
 
-  </body>
-  <!-- <script>
-    getData = async () => {
-      const response = await fetch("/api/user");
-      const htmlContent = await response.json(); // Get the HTML content
-      console.log(htmlContent);
-
-for(i=0;i<htmlContent.length;i++) {
-
-         console.log(i);
-         console.log(htmlContent[i].Name);
-         console.log(htmlContent[i].Price);
-        document.getElementById("name").innerHTML = htmlContent[i].Name;
-        document.getElementById("price").innerHTML = htmlContent[i].Price;
-        document.getElementById("image").src = "/uploads/"+htmlContent[i].productImage;
-}
-  
-    }
-
-   
-  </script> -->
+  <% }) %>
+</div>
+</body>

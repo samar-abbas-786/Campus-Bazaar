@@ -3,57 +3,71 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home_Page</title>
+    <title>Product Details</title>
     <style>
       * {
         padding: 0;
         margin: 0;
         box-sizing: border-box;
       }
+
       body {
         height: 100vh;
-        text-align: center;
         display: flex;
-        flex-direction: column;
+        justify-content: center;
         align-items: center;
-        background-color: #f4f4f4; /* Background color */
-        font-family: Arial, sans-serif; /* Font family */
+        background-color: #f8f9fa; /* Light grey background */
+        font-family: Arial, sans-serif;
       }
+
       h2 {
-        background-color: #007bff; /* Header background color */
-        width: 100vw;
-        color: #ffffff;
-        padding: 1rem;
-        margin-bottom: 1rem;
+        color: #343a40; /* Dark grey text */
+        margin-bottom: 2rem;
+        margin-right: 4rem;
       }
+
       form {
-        max-width: 600px; /* Max width for form */
-        width: 90%; /* Responsive width */
+        max-width: 500px;
+        width: 90%;
         padding: 2rem;
-        background-color: #ffffff; /* Form background color */
+        background-color: #ffffff; /* White background */
         border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Form shadow */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
       }
+
       label {
         font-size: 18px;
         font-weight: bold;
-        width: 100%;
-        text-align: left;
+        color: #343a40; /* Dark grey text */
         margin-bottom: 0.5rem;
+        display: block;
       }
-      input {
+
+      input[type="text"],
+      input[type="number"] {
         height: 40px;
         width: 100%;
         font-size: 16px;
         padding: 0.5rem;
-        border: 1px solid #ccc; /* Input border */
+        border: 1px solid #ced4da; /* Light grey border */
         border-radius: 5px;
         margin-bottom: 1rem;
+        transition: border-color 0.3s ease;
       }
-      button {
+
+      input[type="text"]:focus,
+      input[type="number"]:focus {
+        border-color: #007bff; /* Blue border when focused */
+      }
+
+      input[type="file"] {
+        margin-bottom: 1rem;
+      }
+
+      button[type="submit"] {
         height: 40px;
         width: 100%;
-        background-color: #007bff;
+        background-color: #007bff; /* Blue button */
         color: #ffffff;
         font-weight: bold;
         border: none;
@@ -62,11 +76,14 @@
         cursor: pointer;
         transition: background-color 0.3s ease;
       }
-      button:hover {
-        background-color: #0056b3; /* Button hover color */
+
+      button[type="submit"]:hover {
+        background-color: #0056b3; /* Darker blue on hover */
       }
     </style>
+    <link rel="stylesheet" href="style.css" />
   </head>
+
   <body>
     <h2>Enter Product Details</h2>
     <form
@@ -81,14 +98,16 @@
         id="name"
         name="Name"
         placeholder="Name of Your Product"
+        type="text"
       />
 
-      <label for="price">Price:</label>
+      <label for="price">Price (Rs.):</label>
       <input
         required
         id="price"
-        placeholder="Enter Price in Rupees of Your Product"
         name="Price"
+        placeholder="Enter Price in Rupees of Your Product"
+        type="number"
       />
 
       <label for="contact">Contact Number:</label>
@@ -97,6 +116,7 @@
         id="contact"
         name="Contact_NO"
         placeholder="Enter Your Contact Number"
+        type="text"
       />
 
       <label for="address">Address:</label>
@@ -105,12 +125,11 @@
         id="address"
         name="ADDRESS"
         placeholder="Enter Your Address"
+        type="text"
       />
 
-      <div>
-        <label for="productImage">Upload Product Image</label>
-        <input type="file" id="productImage" name="productImage" />
-      </div>
+      <label for="productImage">Upload Product Image</label>
+      <input type="file" id="productImage" name="productImage" />
 
       <button type="submit">Submit</button>
     </form>

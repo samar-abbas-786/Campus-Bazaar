@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const { v4: uuidv4 } = require("uuid");
+// const { v4: uuidv4 } = require("uuid");
 const mongoose = require("mongoose");
 const path = require("path");
 const PORT = process.env.PORT || 5000;
@@ -9,9 +9,7 @@ const Product = require("./models/productSchema");
 const User = require("./models/userSchema");
 const multer = require("multer");
 const auth = require("./middleware/auth");
-// const os = require("os");
 // const cluster = require("cluster");
-// const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 const cookieParser = require("cookie-parser");
@@ -35,7 +33,8 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(cookieParser());
-app.use(express.static("uploads"));
+app.use(express.static(path.join(__dirname, "uploads")));
+// console.log(__dirname);
 
 // View Engine
 app.set("view engine", "ejs");
@@ -67,7 +66,7 @@ app.post("/upload", upload.single("productImage"), async (req, res) => {
     res.status(201).json(" file uploaded successfully .");
     console.log("New item added:", newItem);
 
-    await res.render("show");
+    return res.render("show");
   } catch (error) {
     console.error("Error adding new item:", error);
     res.status(500).send("Error adding new item");
@@ -83,7 +82,7 @@ app.get("/api/user", async (req, res) => {
     const products = await Product.find({});
 
     // Render the 'show' EJS template and pass the products array to it
-    await res.render("show", { products: products });
+    return res.render("show", { products: products });
   } catch (error) {
     console.error("Error fetching products:", error);
     res.status(500).send("Error fetching products");
@@ -128,8 +127,6 @@ app.post("/login", async (req, res) => {
   const user = await User.findOne({ email }).select("+password");
   console.log(user);
 
-  // const correct = await user.correctPassword(password, user.password);
-
   if (!user || !user.correctPassword(password, user.password)) {
     return res.status(401).send("Invalid email or password");
   }
@@ -149,9 +146,9 @@ app.delete("/delete/:id", async (req, res) => {
   }
 });
 
-app.get("/allProducts", (req, res) => {
-  const products = Product.find();
-  res.render("show", { products: products });
+app.get("/allProducts", async (req, res) => {
+  const products = await Product.find({});
+  return res.render("show", { products: products });
 });
 app.get("/signup/get", (req, res) => {
   res.render("signup");
