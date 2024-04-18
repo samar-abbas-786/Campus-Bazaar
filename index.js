@@ -63,6 +63,7 @@ app.post("/upload", upload.single("productImage"), async (req, res) => {
       productImage: req.file.filename,
     });
     await newItem.save();
+    // return res.render("show");
     res.status(201).json(" file uploaded successfully .");
     console.log("New item added:", newItem);
 
