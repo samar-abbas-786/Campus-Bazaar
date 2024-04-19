@@ -29,6 +29,11 @@ const productSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  category: {
+    type: String,
+    enum: ["Electronics", "Education", "Fashion/Lifestyle", "All", "Other"],
+    default: "All",
+  },
 });
 
 const Product = mongoose.model("Product", productSchema);

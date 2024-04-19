@@ -80,6 +80,38 @@
       button[type="submit"]:hover {
         background-color: #0056b3; /* Darker blue on hover */
       }
+
+      /* Dropdown styling */
+      select {
+        height: 40px;
+        width: 100%;
+        font-size: 16px;
+        padding: 0.5rem;
+        border: 1px solid #ced4da; /* Light grey border */
+        border-radius: 5px;
+        margin-bottom: 1rem;
+        background-color: #ffffff; /* White background */
+        appearance: none; /* Remove default arrow */
+        outline: none; /* Remove default focus outline */
+        cursor: pointer;
+      }
+
+      select:focus {
+        border-color: #007bff; /* Blue border when focused */
+      }
+
+      /* Custom dropdown arrow */
+      select::-ms-expand {
+        display: none; /* Remove default arrow for IE */
+      }
+
+      select::after {
+        content: "\25BC"; /* Unicode character for down arrow */
+        position: absolute;
+        top: 12px;
+        right: 10px;
+        pointer-events: none;
+      }
     </style>
     <link rel="stylesheet" href="style.css" />
   </head>
@@ -130,6 +162,16 @@
 
       <label for="productImage">Upload Product Image</label>
       <input type="file" id="productImage" name="productImage" />
+
+      <!-- Dropdown menu -->
+      <label for="category">Select Category:</label>
+      <select id="category" name="category" required>
+        <option value="All">All Products</option>
+        <option value="Electronics">Electronics</option>
+        <option value="Education">Education</option>
+        <option value="Fashion/Lifestyle">Fashion/Lifestyle</option>
+        <option value="Other">Other</option>
+      </select>
 
       <button type="submit">Submit</button>
     </form>

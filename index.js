@@ -53,7 +53,7 @@ const upload = multer({ storage: storage });
 
 // upload and create a new item
 app.post("/upload", upload.single("productImage"), async (req, res) => {
-  const { Name, Price, Contact_NO, ADDRESS } = req.body;
+  const { Name, Price, Contact_NO, ADDRESS, category } = req.body;
   try {
     const newItem = new Product({
       Name,
@@ -61,6 +61,7 @@ app.post("/upload", upload.single("productImage"), async (req, res) => {
       Contact_NO,
       ADDRESS,
       productImage: req.file.filename,
+      category,
     });
     await newItem.save();
     // return res.render("show");
@@ -78,12 +79,23 @@ app.get("/", (req, res) => {
   return res.render("index");
 });
 
-app.get("/api/user", async (req, res) => {
+app.get("/api/user/", async (req, res) => {
   try {
-    const products = await Product.find({});
+    const products = await Product.find(req.query);
 
     // Render the 'show' EJS template and pass the products array to it
     return res.render("show", { products: products });
+  } catch (error) {
+    console.error("Error fetching products:", error);
+    res.status(500).send("Error fetching products");
+  }
+});
+
+app.get("/select/:category", async (req, res) => {
+  try {
+    const { category } = req.params;
+    const selected_products = await Product.find({ category });
+    return res.status(200).json({ selected_products });
   } catch (error) {
     console.error("Error fetching products:", error);
     res.status(500).send("Error fetching products");
