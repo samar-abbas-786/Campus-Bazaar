@@ -37,6 +37,7 @@ body {
   height: 160px;
   width: 100%;
   object-fit: cover;
+  filter: drop-shadow(0 50px 200px #0009);
 }
 .product-details h3 {
   color: rgb(172, 94, 4);

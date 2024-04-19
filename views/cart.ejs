@@ -1,23 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Add to Cart</title>
-    <style>
-      .cart {
-        height: auto;
-        width: auto;
-        padding: 1rem;
-        background-color: rgb(241, 241, 241);
-      }
-    </style>
-  </head>
-  <body>
-    <% products.forEach(product => { %>
-    <h1>product.name</h1>
-    <p>product.price</p>
+<!-- cart.ejs -->
+<%- include('nav.ejs') %>
+<link rel="stylesheet" href="style.css" />
+<link rel="stylesheet" href="cart.css" />
 
+<body>
+  <div class="top-cart">
+    <% cart_products.forEach(product => { %>
+
+    <div class="product-container">
+      <div class="text">
+        <h3><%= product.Name %></h3>
+        <h4>₹<%= product.Price %></h4>
+        <p style="font-size: 13px">14,jsjwdj bdjebjd j bejbj jjj dj j</p>
+      </div>
+      <div class="img">
+        <img src="/<%= product.productImage %>" alt="" srcset="" />
+        <div class="btns">
+          <form action="/add-to-cart" method="post">
+            <input type="hidden" name="productId" value="<%= product._id %>" />
+            <button class="add-to-cart-btn" type="submit">Add+</button>
+          </form>
+          <button class="buy-btn">Buy</button>
+          <button class="rent-btn">Rent</button>
+        </div>
+      </div>
+    </div>
     <% }) %>
-  </body>
-</html>
+  </div>
+</body>

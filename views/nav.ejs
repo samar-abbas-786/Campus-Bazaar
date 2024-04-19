@@ -47,11 +47,21 @@
         </ul>
       </div>
       <div class="cart">
-        <i
-          id="cart"
-          class="fa-solid fa-cart-shopping fa-xl"
-          style="color: #262626"
-        ></i>
+        <form action="/go-to-cart" method="get">
+          <button
+            style="
+              border: none;
+              background-color: transparent;
+              height: max-content;
+            "
+          >
+            <i
+              id="cart"
+              class="fa-solid fa-cart-shopping fa-2xl"
+              style="color: #262626"
+            ></i>
+          </button>
+        </form>
         <p id="count"></p>
         <i
           onclick="side()"
