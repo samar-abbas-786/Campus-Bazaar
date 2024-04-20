@@ -4,13 +4,13 @@
   box-sizing: border-box;
 }
 body {
-  background-color: rgb(245, 245, 245);
+  background-color: rgb(249, 249, 249);
 }
 .top {
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
-  padding-top: 6rem;
+  padding-top: 7rem;
 }
 .all-products {
   /* height: 100vh;
@@ -27,8 +27,9 @@ body {
   padding: 5px;
   flex-direction: column;
   align-items: center;
-  /* margin-left: 2rem; */
-  margin-top: 1rem;
+  margin-left: 3rem;
+  /* margin-top: 3rem; */
+  /* margin-bottom: 2rem; */
 }
 .single-product:hover {
   border: 1px solid blue;
@@ -49,8 +50,6 @@ body {
 }
 .btn button {
   font-size: 14px;
-  /* padding-left: 8px;
-  padding-right: 8px; */
   padding: 4px 8px 4px 8px;
   border-radius: 5px;
   color: white;

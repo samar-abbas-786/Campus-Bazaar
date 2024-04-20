@@ -29,6 +29,8 @@ if (cluster.isPrimary) {
   });
   console.log(`The Id is: ${process.pid}`);
 
+  // MiddleWares
+
   app.use(express.json());
   app.use(bodyParser.urlencoded({ extended: false }));
   app.use(express.static(path.join(__dirname, "public")));
@@ -73,6 +75,9 @@ if (cluster.isPrimary) {
       console.error("Error adding new item:", error);
       res.status(500).send("Error adding new item");
     }
+  });
+  app.get("/about_section", (req, res) => {
+    return res.render("about");
   });
 
   app.get("/", (req, res) => {
@@ -187,14 +192,3 @@ if (cluster.isPrimary) {
     console.log(`App is running at http://localhost:${PORT}`);
   });
 }
-// const products = [
-//   {
-//     name: "Dummy",
-//     price: "100",
-//     contact_no: "0700000000",
-//     address: "dummy",
-//     image: "samar.jpg",
-//   },
-// ];
-
-// MiddleWares
