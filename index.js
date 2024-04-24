@@ -121,12 +121,14 @@ if (cluster.isPrimary) {
     res.render("home");
   });
 
-  app.post("/signup/user", async (req, res, next) => {
+  app.post("/signup/user", async (req, res) => {
+    const { name, email, password } = req.body;
+    console.log(req.body);
     try {
       const newUser = await User.create({
-        name: req.body.name,
-        email: req.body.email,
-        password: req.body.password,
+        name,
+        email,
+        password,
       });
 
       // console.log("New User added:", newUser);
