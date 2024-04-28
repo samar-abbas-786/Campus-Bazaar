@@ -1,49 +1,38 @@
 const jwt = require("jsonwebtoken");
 const { promisify } = require("util");
 const User = require("../models/userSchema");
-
 async function protect(req, res, next) {
   let token;
 
-  if (
-    req.headers.authorization &&
-    req.headers.authorization.startsWith("samar")
-  ) {
-    token = req.headers.authorization.split(" ")[1];
-  }
+  // Extract token from cookies
+  token = req.cookies.token;
+  console.log(token);
 
   if (!token) {
     return res.status(403).send("Access denied");
   }
-  const decoded = await promisify(jwt.verify)(
-    token,
-    process.env.JWT_SECRET_KEY
-  );
 
-  const freshUser = await User.findOne(decoded._id);
-  if (!freshUser) {
-    return res.status(403).send("No User Exist with this WebToken");
+  try {
+    // Verify JWT token
+    const decoded = await promisify(jwt.verify)(
+      token,
+      process.env.JWT_SECRET_KEY
+    );
+
+    // Find user by ID from decoded token
+    const user = await User.findById(decoded._id);
+    if (!user) {
+      return res.status(403).render("signup");
+    }
+
+    // Attach user object to the request for further processing
+    req.user = user;
+    next();
+  } catch (error) {
+    // Handle errors
+    console.error("Error verifying token:", error);
+    res.status(500).send("Internal Server Error");
   }
-  // console.log(decoded);
-  next();
 }
-
-// const jwt = require("jsonwebtoken");
-// // Middleware to verify JWT token
-// const protect = (req, res, next) => {
-//   const token = req.headers.authorization?.split(" ")[1];
-//   if (!token) {
-//     res.status(401).send("Authentication required.");
-//     return;
-//   }
-//   jwt.verify(token, "secret", (err, decoded) => {
-//     if (err) {
-//       res.status(403).send("Invalid token.");
-//       return;
-//     }
-//     req.user = decoded;
-//     next();
-//   });
-// };
 
 module.exports = { protect };

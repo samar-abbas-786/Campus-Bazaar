@@ -19,7 +19,7 @@ if (cluster.isPrimary) {
   const Product = require("./models/productSchema");
   const User = require("./models/userSchema");
   const multer = require("multer");
-  const auth = require("./middleware/auth");
+  const { protect } = require("./middleware/auth");
   const jwt = require("jsonwebtoken");
   require("dotenv").config();
   const cookieParser = require("cookie-parser");
@@ -86,7 +86,7 @@ if (cluster.isPrimary) {
 
   app.get("/api/user/", async (req, res) => {
     try {
-      const products = await Product.find({});
+      const products = await Product.find({}).sort({ createdAt: -1 });
 
       // Render the 'show' EJS template and pass the products array to it
       return res.render("show", { products: products });
@@ -95,10 +95,22 @@ if (cluster.isPrimary) {
       res.status(500).send("Error fetching products");
     }
   });
+  // app.get("/Electronics", async (req, res) => {
+  //   try {
+  //     const products = await Product.find({ category: Electronics });
 
-  app.get("/go-to-cart/:id?", async (req, res) => {
+  //     // Render the 'show' EJS template and pass the products array to it
+  //     return res.render("show", { products: products });
+  //   } catch (error) {
+  //     console.error("Error fetching products:", error);
+  //     res.status(500).send("Error fetching products");
+  //   }
+  // });
+
+  app.get("/go-to-cart/", async (req, res) => {
     try {
-      const cart_products = await Product.findById(req.params.id);
+      const id = req.ObjectId;
+      const cart_products = await Product.findById(id);
       return res.render("cart", { cart_products: cart_products });
     } catch (error) {
       console.error(error);
@@ -106,16 +118,17 @@ if (cluster.isPrimary) {
     }
   });
 
-  app.get("/select/:category", async (req, res) => {
-    try {
-      const { category } = req.params;
-      const selected_products = await Product.find({ category });
-      return res.status(200).json({ selected_products });
-    } catch (error) {
-      console.error("Error fetching products:", error);
-      res.status(500).send("Error fetching products");
-    }
-  });
+  // app.get("/Fashion/Lifestyle", async (req, res) => {
+  //   try {
+  //     const selected_products = await Product.find({
+  //       category: Fashion / Lifestyle,
+  //     });
+  //     return res.status(200).json({ selected_products });
+  //   } catch (error) {
+  //     console.error("Error fetching products:", error);
+  //     res.status(500).send("Error fetching products");
+  //   }
+  // });
 
   app.post("/button", (req, res) => {
     res.render("home");
@@ -135,17 +148,23 @@ if (cluster.isPrimary) {
       const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET_KEY, {
         expiresIn: process.env.JWT_EXPIRY,
       });
+      res.cookie("token", token, {
+        httpOnly: true,
+        secure: false,
+        maxAge: 36000000,
+      });
+      res.status(200).render("add");
 
       // Render the signup page
-      res.status(200).json({
-        status: "success",
-        token,
-        user: newUser,
-      });
     } catch (error) {
       console.error("Error adding new user:", error);
       res.status(500).send("Error adding new user");
     }
+  });
+
+  app.get("/logout", async (req, res) => {
+    res.clearCookie("token");
+    res.redirect("/login");
   });
 
   app.get("/login", (req, res) => {
@@ -187,7 +206,7 @@ if (cluster.isPrimary) {
     res.render("index");
   });
 
-  app.get("/add", (req, res) => {
+  app.get("/add", protect, (req, res) => {
     res.render("add");
   });
   app.listen(PORT, () => {

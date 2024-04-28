@@ -1,0 +1,55 @@
+<style>
+  .up {
+    height: 100px;
+    width: 100vw;
+    color: rgb(0, 0, 0);
+    font-family: serif;
+    padding-top: 80px;
+  }
+  select {
+    /* height: 100px; */
+    width: 200px;
+    height: 30px;
+    font-size: 17px;
+    text-align: center;
+    background-color: cornflowerblue;
+    color: white;
+  }
+  /* form {
+    height: 100px;
+    width: 100vw;
+  } */
+  button {
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+  }
+</style>
+
+<body>
+  <div class="up">
+    <select name="select" id="select">
+      <option value="All">
+        <form action=""><button>All</button></form>
+      </option>
+      <option value="Fashion/Lifestyle">
+        <form action="/Fashion/Lifestyle" method="get">
+          <button>Fashion/Lifestyle</button>
+        </form>
+      </option>
+      <option value="Electronics">
+        <form action="/Electronics" method="get">
+          <button>Electronics</button>
+        </form>
+      </option>
+      <option value="Education">
+        <form action="/Education" method="get">
+          <button>Education</button>
+        </form>
+      </option>
+      <option value="Other">
+        <form action="/Other" method="get"><button>Other</button></form>
+      </option>
+    </select>
+  </div>
+</body>

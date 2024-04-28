@@ -25,6 +25,10 @@ const productSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  createdBy: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "users",
+  },
   createdAt: {
     type: Date,
     default: Date.now,
