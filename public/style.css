@@ -313,11 +313,11 @@ nav {
   border-radius: 5px;
   padding-left: 1rem;
   padding-right: 1rem;
-  font-size: 17px;
+  font-size: 19px;
   /* border: 1px solid black; */
   background-color: #f8f8fd;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-family: "Fira Sans", sans-serif;
+  word-spacing: 9px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -341,12 +341,14 @@ nav {
 footer {
   height: 50vh;
   width: 100vw;
-  background-color: white;
+  background-color: #fff;
   display: flex;
   flex-direction: column;
+  color: white;
   align-items: center;
   justify-content: space-evenly;
 }
+
 footer .right {
   width: 100vw;
   display: flex;

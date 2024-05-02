@@ -151,7 +151,7 @@ if (cluster.isPrimary) {
       res.cookie("token", token, {
         httpOnly: true,
         secure: false,
-        maxAge: 36000000,
+        maxAge: 3600000,
       });
       res.status(200).render("add");
 
