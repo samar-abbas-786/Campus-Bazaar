@@ -11,7 +11,8 @@
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
-  padding-top: 7rem;
+  padding-top: 9rem;
+  margin-bottom: 8rem;
 }
 .all-products {
   /* height: 100vh;
@@ -20,7 +21,7 @@
 }
 .single-product {
   height: max-content;
-  width: 205px;
+  width: 255px;
   border: 1px solid black;
   border-radius: 6px;
   background-color: #f8f8fd;
@@ -50,7 +51,7 @@
   flex-direction: column;
 }
 .btn button {
-  font-size: 14px;
+  font-size: 18px;
   padding: 4px 8px 4px 8px;
   border-radius: 5px;
   color: white;
