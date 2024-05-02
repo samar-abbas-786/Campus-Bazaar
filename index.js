@@ -18,6 +18,8 @@ const PORT = process.env.PORT || 5000;
 const bodyParser = require("body-parser");
 const Product = require("./models/productSchema");
 const User = require("./models/userSchema");
+const Suggestion = require("./models/suggestionSchema");
+
 const multer = require("multer");
 const { protect } = require("./middleware/auth");
 const jwt = require("jsonwebtoken");
@@ -139,6 +141,18 @@ app.post("/signup/user", async (req, res) => {
     res.status(500).send("Error adding new user");
   }
 });
+app.post("/submitsuggestion", async (req, res) => {
+  const { suggestion } = req.body;
+  try {
+    const newSuggestion = await Suggestion.create({
+      suggestion,
+    });
+    res.status(200).render("thanks");
+  } catch (error) {
+    console.error("Error adding new suggestion:", error);
+    res.status(500).send("Error adding new suggestion");
+  }
+});
 
 app.get("/logout", async (req, res) => {
   res.clearCookie("token");
@@ -186,6 +200,9 @@ app.get("/signup/get", (req, res) => {
 });
 app.get("/home", (req, res) => {
   res.render("index");
+});
+app.get("/suggest", (req, res) => {
+  return res.render("suggestion");
 });
 
 app.get("/add", (req, res) => {

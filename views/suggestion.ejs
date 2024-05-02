@@ -1,0 +1,81 @@
+<%- include('nav.ejs') %>
+<link rel="stylesheet" href="style.css" />
+
+<style>
+  .container {
+    padding: 2rem;
+    padding-top: 7rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  .box {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    max-width: 500px;
+    width: 100%;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  textarea {
+    width: 100%;
+    height: 150px; /* Set the height as needed */
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+    resize: vertical; /* Allow vertical resizing */
+  }
+  label {
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  button[type="submit"] {
+    padding: 10px 20px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+
+  button[type="submit"]:hover {
+    background-color: #45a049;
+  }
+</style>
+
+<body>
+  <div class="container">
+    <div class="box">
+      <h1 style="text-align: center">Suggestion Form</h1>
+      <form action="/submitsuggestion" method="post">
+        <label for="suggestion">Enter your suggestion:</label>
+        <textarea
+          id="suggestion"
+          name="suggestion"
+          autocomplete="off"
+        ></textarea>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+</body>
+<!-- <script>
+  function async resetForm() {
+    // Clear the textarea field
+    await document.getElementById("suggestion").value = "";
+  }
+</script> -->

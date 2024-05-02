@@ -1,0 +1,35 @@
+<!-- thankYou.ejs -->
+<%- include('nav.ejs') %>
+<link rel="stylesheet" href="style.css" />
+
+<style>
+  .container {
+    padding: 2rem;
+    padding-top: 7rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  .message {
+    text-align: center;
+  }
+  button {
+    padding: 6px;
+    margin-top: 2rem;
+    color: white;
+    background-color: darkslateblue;
+    border-radius: 3px;
+    border: none;
+  }
+</style>
+
+<body>
+  <div class="container">
+    <div class="message">
+      <h1>Thank You!</h1>
+      <p>Your suggestion has been submitted successfully.</p>
+      <form action="/home" method="get"><button>Back to Home</button></form>
+    </div>
+  </div>
+</body>
