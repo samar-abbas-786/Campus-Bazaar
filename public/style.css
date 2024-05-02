@@ -3,9 +3,12 @@
   padding: 0;
   box-sizing: border-box;
 }
+#bar {
+  display: none;
+}
 
 .sidebar {
-  height: 50px;
+  height: 200px;
   width: 100vw;
   background-color: #f8f8fd;
   display: none;
@@ -23,10 +26,6 @@
 .sidebar button {
   background-color: transparent;
   border: none;
-}
-
-#bar:hover .sidebar {
-  display: block;
 }
 
 nav {
@@ -135,9 +134,7 @@ nav {
   font-size: 3rem;
   text-align: center;
 }
-#bar {
-  display: none;
-}
+
 .text p {
   width: 90%;
   font-size: 21px;
@@ -502,6 +499,7 @@ footer .right {
   }
   #txt p {
     font-size: 16px;
+    padding-left: 1rem;
   }
   .service {
     height: max-content;

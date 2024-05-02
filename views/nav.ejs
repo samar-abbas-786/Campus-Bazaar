@@ -11,6 +11,8 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -23,7 +25,25 @@
       href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
     />
-    <style></style>
+    <style>
+      .add {
+        display: none;
+      }
+      @media screen and (max-width: 800px) {
+        #mySidebar {
+          text-align: center;
+        }
+        #mySidebar form button {
+          border: none;
+          background-color: transparent;
+          margin-top: 1rem;
+          font-size: 18px;
+        }
+        #mySidebar form button:hover {
+          opacity: 0.7;
+        }
+      }
+    </style>
   </head>
   <body>
     <nav id="nav">
@@ -32,9 +52,13 @@
       </div>
       <div class="right">
         <ul>
-          <form action="/home" method="get"><button>Home</button></form>
+          <form action="/home" method="get">
+            <button>Home</button>
+          </form>
 
-          <form action="/about_section"><button>About</button></form>
+          <form action="/about_section">
+            <button>About</button>
+          </form>
 
           <form action="/add" method="get"><button>Add</button></form>
 
@@ -63,33 +87,58 @@
             ></i>
           </button>
         </form>
-        <p id="count"></p>
         <i
-          onclick="side()"
           id="bar"
+          onclick="w3_open()"
           class="fa-solid fa-bars fa-2xl"
           style="color: #262626"
         ></i>
       </div>
     </nav>
-    <div class="sidebar">
-      <ul>
-        <form action=""><button>Home</button></form>
+    <div
+      class="w3-sidebar w3-bar-block w3-animate-right add"
+      style="
+        width: 200px;
+        display: block;
+        right: 0;
+        position: absolute;
+        z-index: 100000;
+      "
+      id="mySidebar"
+    >
+      <button
+        class="w3-bar-item w3-button w3-large w3-hide-large"
+        onclick="w3_close()"
+      >
+        <b style="display: flex; justify-content: center; font-size: 30px"
+          >&times</b
+        >
+      </button>
+      <form action=""><button>Home</button></form>
 
-        <form action="/about_section" method="get">
-          <button>About</button>
-        </form>
+      <form action="/about_section" method="get">
+        <button>About</button>
+      </form>
 
-        <form action="/add" method="get"><button>Add</button></form>
+      <form action="/add" method="get"><button>Add</button></form>
 
-        <form action="/allProducts" method="get">
-          <button>Get</button>
-        </form>
+      <form action="/allProducts" method="get">
+        <button>Get</button>
+      </form>
 
-        <form action="/signup/get" method="get">
-          <button>Sign up</button>
-        </form>
-      </ul>
+      <form action="/signup/get" method="get">
+        <button>Sign up</button>
+      </form>
     </div>
   </body>
+  <script>
+    document.getElementById("mySidebar").style.display = "none";
+    function w3_open() {
+      document.getElementById("mySidebar").style.display = "block";
+    }
+
+    function w3_close() {
+      document.getElementById("mySidebar").style.display = "none";
+    }
+  </script>
 </html>

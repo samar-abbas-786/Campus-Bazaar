@@ -3,9 +3,10 @@
   padding: 0;
   box-sizing: border-box;
 }
-body {
-  background-color: rgb(249, 249, 249);
-}
+/* body {
+  background-color: white;
+  opacity: 1;
+} */
 .top {
   display: flex;
   justify-content: space-evenly;
@@ -66,4 +67,17 @@ body {
 }
 #btn3 {
   background-color: rgb(22, 8, 106);
+}
+
+@media screen and (max-width: 800px) {
+  .all-products {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+  }
+  .single-product {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    margin-left: 0;
+  }
 }
