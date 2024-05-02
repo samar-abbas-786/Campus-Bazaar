@@ -9,7 +9,8 @@ async function protect(req, res, next) {
   console.log(token);
 
   if (!token) {
-    return res.status(403).send("Access denied");
+    // confirm("Please Signup or login before signing up");
+    return res.status(403).render("signup");
   }
 
   try {

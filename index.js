@@ -153,6 +153,7 @@ if (cluster.isPrimary) {
         secure: false,
         maxAge: 3600000,
       });
+      console.log(req.cookies.token);
       res.status(200).render("add");
 
       // Render the signup page
@@ -199,6 +200,10 @@ if (cluster.isPrimary) {
     const products = await Product.find({});
     return res.render("show", { products: products });
   });
+  app.get("/explore", async (req, res) => {
+    const products = await Product.find({});
+    return res.render("show", { products: products });
+  });
   app.get("/signup/get", (req, res) => {
     res.render("signup");
   });
@@ -206,7 +211,7 @@ if (cluster.isPrimary) {
     res.render("index");
   });
 
-  app.get("/add", protect, (req, res) => {
+  app.get("/add", (req, res) => {
     res.render("add");
   });
   app.listen(PORT, () => {

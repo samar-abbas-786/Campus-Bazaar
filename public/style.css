@@ -176,7 +176,7 @@ nav {
 
 /* about Section*/
 .abt {
-  height: 600px;
+  height: 900px;
   width: 100vw;
   display: flex;
   align-items: center;
@@ -194,7 +194,7 @@ nav {
   background-position: center;
 }
 #txt {
-  height: 300px;
+  height: 450px;
   width: 50vw;
   display: flex;
   flex-direction: column;
@@ -209,7 +209,7 @@ nav {
   text-align: center;
 }
 #txt p {
-  font-size: 18px;
+  font-size: 21px;
   word-spacing: 4px;
   /* font-family: Arial, Helvetica, sans-serif; */
   font-family: "Fira Sans", sans-serif;
@@ -287,7 +287,7 @@ nav {
 /* About Portion */
 
 .about {
-  height: 100vh;
+  height: 130vh;
   width: 100vw;
   display: flex;
   flex-direction: column;
@@ -347,6 +347,12 @@ footer {
   color: white;
   align-items: center;
   justify-content: space-evenly;
+}
+footer .left {
+  width: 100vw;
+  text-align: center;
+  display: flex;
+  justify-content: center;
 }
 
 footer .right {
