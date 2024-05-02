@@ -416,11 +416,14 @@ footer .right {
     height: 90px;
   }
   .left {
-    width: 40vw;
+    width: 80vw;
   }
   .left h1 {
-    font-size: 23px;
+    font-size: 27px;
     font-weight: bold;
+  }
+  .right {
+    width: 10vw;
   }
   .hero {
     height: max-content;
