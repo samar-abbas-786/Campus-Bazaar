@@ -413,13 +413,14 @@ footer .right {
 
 @media screen and (max-width: 800px) {
   nav {
-    height: 70px;
+    height: 90px;
   }
   .left {
     width: 40vw;
   }
   .left h1 {
-    font-size: 23px;
+    font-size: 25px;
+    font-weight: bold;
   }
   .hero {
     height: max-content;
@@ -563,7 +564,7 @@ footer .right {
     width: 100vw;
   }
   footer .right ul button {
-    font-size: 14px;
+    font-size: 16px;
   }
   .social {
     width: 60vw;
