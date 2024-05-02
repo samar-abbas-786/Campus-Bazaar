@@ -96,7 +96,6 @@ app.get("/api/user/", async (req, res) => {
   }
 });
 
-
 app.get("/go-to-cart/", async (req, res) => {
   try {
     const id = req.ObjectId;
@@ -107,8 +106,6 @@ app.get("/go-to-cart/", async (req, res) => {
     return res.status(500).send("Internal Server Error");
   }
 });
-
-
 
 app.post("/button", (req, res) => {
   res.render("home");
