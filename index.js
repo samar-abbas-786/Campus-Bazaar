@@ -25,9 +25,9 @@ require("dotenv").config();
 const cookieParser = require("cookie-parser");
 
 mongoose.connect(process.env.MONGO_URI).then(() => {
-  console.log("MONGODB1 CONNECTED");
+  console.log("MONGODB CONNECTED");
 });
-console.log(`The Id is: ${process.pid}`);
+// console.log(`The Id is: ${process.pid}`);
 
 // MiddleWares
 
@@ -95,17 +95,7 @@ app.get("/api/user/", async (req, res) => {
     res.status(500).send("Error fetching products");
   }
 });
-// app.get("/Electronics", async (req, res) => {
-//   try {
-//     const products = await Product.find({ category: Electronics });
 
-//     // Render the 'show' EJS template and pass the products array to it
-//     return res.render("show", { products: products });
-//   } catch (error) {
-//     console.error("Error fetching products:", error);
-//     res.status(500).send("Error fetching products");
-//   }
-// });
 
 app.get("/go-to-cart/", async (req, res) => {
   try {
@@ -118,17 +108,7 @@ app.get("/go-to-cart/", async (req, res) => {
   }
 });
 
-// app.get("/Fashion/Lifestyle", async (req, res) => {
-//   try {
-//     const selected_products = await Product.find({
-//       category: Fashion / Lifestyle,
-//     });
-//     return res.status(200).json({ selected_products });
-//   } catch (error) {
-//     console.error("Error fetching products:", error);
-//     res.status(500).send("Error fetching products");
-//   }
-// });
+
 
 app.post("/button", (req, res) => {
   res.render("home");
