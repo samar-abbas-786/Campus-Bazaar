@@ -6,17 +6,20 @@
     <title>Product Details</title>
     <style>
       body {
-        background-color: #f0f0f0; /* Light grey background */
+        /* Light grey background */
+        background-color: #007bff;
         font-family: "Roboto", sans-serif;
         display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
         margin: 0; /* Remove default margin */
-        min-height: 100vh; /* Ensure full viewport height */
+        min-height: 100vh;
+        margin-top: 2rem; /* Ensure full viewport height */
       }
 
       h2 {
-        color: #333; /* Dark grey text */
+        color: #ffffff; /* Dark grey text */
         margin: 0 0 2rem; /* Margin adjustments */
       }
 
@@ -66,6 +69,13 @@
       @media screen and (min-width: 768px) {
         form {
           width: 70%; /* Adjust width for larger screens */
+        }
+        body {
+          background-color: #f0f0f8;
+          margin-top: 2rem;
+        }
+        h2 {
+          color: rgb(0, 0, 0);
         }
       }
     </style>
