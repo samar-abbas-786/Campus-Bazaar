@@ -54,7 +54,10 @@ const storage = multer.diskStorage({
     cb(null, Date.now() + path.extname(file.originalname));
   },
 });
-const upload = multer({ storage: storage });
+const upload = multer(
+  { storage: storage },
+  { limits: { fileSize: 5 * 1024 * 1024 } }
+);
 
 // upload and create a new item
 app.post("/upload", upload.single("productImage"), async (req, res) => {
@@ -96,7 +99,10 @@ app.get("/api/user/", async (req, res) => {
     const products = await Product.find({}).sort({ createdAt: -1 });
 
     // Render the 'show' EJS template and pass the products array to it
-    return res.render("show", { products: products,cloud_name:process.env.cloud_name });
+    return res.render("show", {
+      products: products,
+      cloud_name: process.env.cloud_name,
+    });
   } catch (error) {
     console.error("Error fetching products:", error);
     res.status(500).send("Error fetching products");
