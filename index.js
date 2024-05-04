@@ -25,6 +25,7 @@ const { protect } = require("./middleware/auth");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 const cookieParser = require("cookie-parser");
+const cloudinary = require("./utils/cloudinary");
 
 mongoose.connect(process.env.MONGO_URI).then(() => {
   console.log("MONGODB CONNECTED");
@@ -59,25 +60,29 @@ const upload = multer({ storage: storage });
 app.post("/upload", upload.single("productImage"), async (req, res) => {
   const { Name, Price, Contact_NO, ADDRESS, category } = req.body;
   try {
+    const result = await cloudinary.uploader.upload(req.file.path, {
+      folder: "uploads",
+    });
     const newItem = new Product({
       Name,
       Price,
       Contact_NO,
       ADDRESS,
-      productImage: req.file.filename,
+      productImage: {
+        public_id: result.public_id,
+        url: result.secure_url,
+      },
       category,
     });
     await newItem.save();
-    // return res.render("show");
-    res.status(201).json(" file uploaded successfully .");
     console.log("New item added:", newItem);
-
-    return res.render("show");
+    res.status(201).json("File uploaded successfully.");
   } catch (error) {
     console.error("Error adding new item:", error);
     res.status(500).send("Error adding new item");
   }
 });
+
 app.get("/about_section", (req, res) => {
   return res.render("about");
 });
@@ -91,7 +96,7 @@ app.get("/api/user/", async (req, res) => {
     const products = await Product.find({}).sort({ createdAt: -1 });
 
     // Render the 'show' EJS template and pass the products array to it
-    return res.render("show", { products: products });
+    return res.render("show", { products: products,cloud_name:process.env.cloud_name });
   } catch (error) {
     console.error("Error fetching products:", error);
     res.status(500).send("Error fetching products");
@@ -141,6 +146,7 @@ app.post("/signup/user", async (req, res) => {
     res.status(500).send("Error adding new user");
   }
 });
+
 app.post("/submitsuggestion", async (req, res) => {
   const { suggestion } = req.body;
   try {
