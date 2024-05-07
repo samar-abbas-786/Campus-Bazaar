@@ -419,8 +419,9 @@ footer .right {
     width: 80vw;
   }
   .left h1 {
-    font-size: 27px;
-    font-weight: bold;
+    font-size: 24px;
+    /* font-weight: bold; */
+    font-weight: 450;
   }
   .right {
     width: 10vw;

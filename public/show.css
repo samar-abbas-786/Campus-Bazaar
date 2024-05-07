@@ -35,7 +35,7 @@
   /* margin-bottom: 2rem; */
 }
 .single-product:hover {
-  border: 1px solid blue;
+  border: 1px solid rgb(50, 5, 198);
 }
 #image {
   height: 180px;
