@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <link rel="stylesheet" href="details.css" />
+  </head>
+  <body>
+    <main>
+      <div class="image_section">
+        <img
+          id="image"
+          src="https://res.cloudinary.com/dkwmmww8q/image/upload/<%= product.productImage.public_id %>"
+          alt="<%= product.Name %>"
+          srcset=""
+        />
+      </div>
+      <div class="details_section">
+        <h1><%= product.Name %></h1>
+        <h2><%= product.Price %></h2>
+        <p><%= product.Contact_NO %></p>
+        <p><%= product.ADDRESS %></p>
+      </div>
+    </main>
+  </body>
+</html>
+
+<%- include('footer.ejs') %>
