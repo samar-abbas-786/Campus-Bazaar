@@ -1,27 +1,45 @@
+/* Reset CSS */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+/* Body styles */
+body {
+  font-family: Arial, sans-serif; /* Use a common font for better compatibility */
   background-color: #f8f8f8;
 }
 
+/* Main container */
 main {
-  display: flex;
-  justify-content: space-evenly;
-  padding-top: 9rem;
-  margin-bottom: 8rem;
-}
-.image_section {
-  height: 400px;
-  width: 200px;
-  border: 4px solid black;
-}
-.details_section {
-  height: 200px;
   width: 80vw;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
-  padding-top: 3rem;
+  justify-content: center; /* Center the content horizontally */
+  align-items: center; /* Center the content vertically */
+  height: 100vh;
+}
+
+/* Image section */
+.image_section {
+  border: 4px solid black;
+  padding: 10px; /* Add some padding to the image container */
+}
+
+/* Details section */
+.details_section {
+  width: 50%; /* Set a fixed width for better layout */
+  padding: 20px; /* Add padding to the details section */
+  text-align: center; /* Center the text */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  main {
+    flex-direction: column; /* Stack content vertically on smaller screens */
+    text-align: center; /* Center content */
+  }
+  .image_section {
+    margin-bottom: 20px; /* Add some space between image and details */
+  }
 }

@@ -169,7 +169,7 @@ app.post("/submitsuggestion", async (req, res) => {
 app.get("/getOne/:id", async (req, res) => {
   const { id } = req.params;
   const product = await Product.findById(id);
-  res.render("details", { product: product });
+  await res.render("details", { product: product });
 });
 
 app.get("/logout", async (req, res) => {

@@ -1,38 +1,41 @@
-<!-- <script src="show.js"></script> -->
-<link rel="stylesheet" href="show.css" />
-<link rel="stylesheet" href="style.css" />
-<%-include('nav.ejs') %>
-<style>
- 
-</style>
-<body>
-  <div class="top">
-   
-  <% products.forEach(product => { %>
-  <div class="all-products">
-    <div class="single-product">
-      <img
-        id="image"
-        src='https://res.cloudinary.com/dkwmmww8q/image/upload/<%= product.productImage.public_id %>'
-        alt="<%= product.Name %>"
-        srcset=""
-       
-      />
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="show.css" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Products List</title>
+  </head>
+  <body>
+    <%- include('nav.ejs') %>
 
-      <div class="product-details">
+    <div class="top">
+      <% products.forEach(product => { %>
+      <div class="all-products">
+        <div class="single-product">
+          <a href="/getOne/<%= product._id %>">
+            <img
+              id="image"
+              src="https://res.cloudinary.com/dkwmmww8q/image/upload/<%= product.productImage.public_id %>"
+              alt="<%= product.Name %>"
+            />
+          </a>
 
-       <h1 id="name"><%= product.Name %></h1>
-        <h3 id="price">₹<%= product.Price %></h2>
-          <div class="btn">
-          <button id="btn1">Add+</button>
-            <button  id="btn2">Buy</button>
-          <button  id="btn3">Rent</button>
+          <div class="product-details">
+            <h1 id="name"><%= product.Name %></h1>
+            <h3 id="price">₹<%= product.Price %></h3>
+            <div class="btn">
+              <button id="btn1">Add+</button>
+              <button id="btn2">Buy</button>
+              <button id="btn3">Rent</button>
+            </div>
+          </div>
         </div>
       </div>
+      <% }) %>
     </div>
-  </div>
 
-  <% }) %>
-</div>
-</body>
-<%-include('footer.ejs') %>
+    <%- include('footer.ejs') %>
+  </body>
+</html>
