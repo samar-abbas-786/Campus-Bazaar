@@ -14,21 +14,22 @@
       <% products.forEach(product => { %>
       <div class="all-products">
         <div class="single-product">
-          <a href="/getOne/<%= product._id %>">
-            <img
-              id="image"
-              src="https://res.cloudinary.com/dkwmmww8q/image/upload/<%= product.productImage.public_id %>"
-              alt="<%= product.Name %>"
-            />
-          </a>
+          <img
+            id="image"
+            src="https://res.cloudinary.com/dkwmmww8q/image/upload/<%= product.productImage.public_id %>"
+            alt="<%= product.Name %>"
+          />
 
           <div class="product-details">
             <h1 id="name"><%= product.Name %></h1>
             <h3 id="price">₹<%= product.Price %></h3>
             <div class="btn">
-              <button id="btn1">Add+</button>
-              <button id="btn2">Buy</button>
-              <button id="btn3">Rent</button>
+              <button onclick="openProduct('<%= product._id %>')" id="btn1">
+                View Details
+              </button>
+
+              <!-- <button id="btn2">Buy</button>
+              <button id="btn3">Rent</button> -->
             </div>
           </div>
         </div>
@@ -37,5 +38,10 @@
     </div>
 
     <%- include('footer.ejs') %>
+    <script>
+      function openProduct(productId) {
+        window.open("/getOne/" + productId);
+      }
+    </script>
   </body>
 </html>

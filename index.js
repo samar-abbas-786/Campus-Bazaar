@@ -167,9 +167,19 @@ app.post("/submitsuggestion", async (req, res) => {
 });
 
 app.get("/getOne/:id", async (req, res) => {
-  const { id } = req.params;
-  const product = await Product.findById(id);
-  await res.render("details", { product: product });
+  try {
+    const { id } = req.params;
+    const product = await Product.findById(id);
+    if (!product) {
+      // Product with the given ID not found
+      return res.status(404).send("Product not found");
+    }
+    res.render("details", { product: product });
+  } catch (error) {
+    // Handle any errors that occur during the execution
+    console.error("Error fetching product:", error);
+    res.status(500).send("Error fetching product");
+  }
 });
 
 app.get("/logout", async (req, res) => {
