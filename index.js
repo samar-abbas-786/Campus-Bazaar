@@ -26,6 +26,8 @@ const jwt = require("jsonwebtoken");
 require("dotenv").config();
 const cookieParser = require("cookie-parser");
 const cloudinary = require("./utils/cloudinary");
+const session = require("express-session");
+const flush = require("connect-flash");
 
 mongoose.connect(process.env.MONGO_URI).then(() => {
   console.log("MONGODB CONNECTED");
@@ -34,6 +36,17 @@ mongoose.connect(process.env.MONGO_URI).then(() => {
 
 // MiddleWares
 
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      maxAge: 60000,
+    },
+  })
+);
+app.use(flush());
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
@@ -144,11 +157,14 @@ app.post("/signup/user", async (req, res) => {
       maxAge: 3600000,
     });
     console.log(req.cookies.token);
-    res.status(200).render("add");
+    req.flash("msg", "Successfully signed");
+    res.status(200).render("add", { msg: req.flash("msg") });
 
     // Render the signup page
   } catch (error) {
     console.error("Error adding new user:", error);
+    req.flash("msg", " Something Went Wrong");
+
     res.status(500).send("Error adding new user");
   }
 });

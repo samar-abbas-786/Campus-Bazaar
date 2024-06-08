@@ -64,6 +64,18 @@
         cursor: pointer;
         transition: background-color 0.3s ease;
       }
+      .flash {
+        top: 0;
+        height: 60px;
+        width: 100vw;
+        background-color: rgb(190, 239, 192);
+        font-size: 27px;
+        font-family: "Times New Roman", Times, serif;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
 
       /* Media queries for responsiveness */
       @media screen and (min-width: 768px) {
@@ -80,8 +92,13 @@
       }
     </style>
   </head>
+
   <body>
     <h2>Enter Product Details</h2>
+    <% if (msg.length>0) { %>
+    <div class="flash"><%-msg %></div>
+
+    <% } %>
     <form
       id="myform"
       action="/upload"
