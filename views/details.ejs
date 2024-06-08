@@ -41,7 +41,7 @@
       }
       .details_section {
         height: 300px;
-        width: auto;
+        width: 350px;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -72,6 +72,28 @@
       .btn1:hover {
         scale: 1.1;
         transition: 0.2s;
+      }
+      @media screen and (max-width: 768px) {
+        .top {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        main {
+          width: 100vw;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+        }
+        .image_section {
+          height: 300px;
+          width: 300px;
+          border: none;
+        }
+        .image_section img {
+          height: 200px;
+          width: 200px;
+        }
       }
     </style>
   </head>
