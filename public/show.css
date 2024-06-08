@@ -31,8 +31,8 @@
   align-items: center;
   background-color: black;
   margin-left: 3rem;
-  /* margin-top: 3rem; */
-  /* margin-bottom: 2rem; */
+  margin-top: 3rem;
+  margin-bottom: 2rem;
 }
 .single-product:hover {
   border: 1px solid rgb(50, 5, 198);
@@ -43,7 +43,10 @@
   object-fit: fill;
   filter: drop-shadow(0 50px 200px #0009);
 }
-
+.product-details {
+  text-align: center;
+  padding: 4px;
+}
 .product-details h3 {
   color: rgb(172, 94, 4);
 }
@@ -68,6 +71,7 @@
 }
 #btn1 {
   background-color: rgb(245, 95, 9);
+  margin-bottom: 3px;
 }
 #btn2 {
   background-color: rgb(5, 239, 8);
