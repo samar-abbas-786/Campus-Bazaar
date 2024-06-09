@@ -249,7 +249,7 @@ app.get("/suggest", (req, res) => {
   return res.render("suggestion");
 });
 
-app.get("/add", protect, (req, res) => {
+app.get("/add", (req, res) => {
   res.render("add");
 });
 app.listen(PORT, () => {
