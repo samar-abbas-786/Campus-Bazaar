@@ -422,15 +422,19 @@ footer .right {
     padding-left: 0;
     padding-right: 0;
     flex-direction: column;
+    text-align: center;
     /* height: 80vh; */
   }
   .home-pic {
     height: max-content;
     padding-left: 0;
-    padding-top: 6rem;
+    padding-top: 8rem;
     padding-bottom: 0;
     border-radius: 5px;
     width: 80vw;
+  }
+  .text h1 b {
+    word-spacing: 9px;
   }
   .home-pic img {
     height: 200px;
@@ -457,6 +461,13 @@ footer .right {
   }
   .hero .text h1 {
     font-size: 30.5px;
+    text-align: center;
+  }
+  .text span {
+    letter-spacing: 7px;
+  }
+  .text b {
+    letter-spacing: 7px;
   }
   .text p {
     font-size: 18px;
