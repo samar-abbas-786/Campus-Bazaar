@@ -17,7 +17,7 @@ main {
   display: flex;
   justify-content: center; /* Center the content horizontally */
   align-items: center; /* Center the content vertically */
-  height: 100vh;
+  height: 90vh;
 }
 
 /* Image section */
