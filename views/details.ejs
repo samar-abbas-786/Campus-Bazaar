@@ -131,12 +131,22 @@
             "
             class="btns"
           >
-            <button class="btn1">Add</button>
+            <button onclick="openCart('<%= product._id %>')" class="btn1">
+              Add
+            </button>
             <button class="btn1">Buy</button>
-            <button class="btn1">Rent</button>
+
+            <button class="btn1">
+              <a href="/rent-form/<%= product._id %>">Rent</a>
+            </button>
           </div>
         </div>
       </main>
     </div>
   </body>
+  <script>
+    function openCart(productId) {
+      window.open("/addtocart/" + productId);
+    }
+  </script>
 </html>

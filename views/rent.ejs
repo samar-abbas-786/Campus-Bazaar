@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rent form</title>
+
+    <style>
+      /* Styling the Body element 
+        i.e. Color, Font, Alignment */
+      body {
+        background-color: #fff;
+        font-family: Verdana;
+        text-align: center;
+      }
+      .total {
+        height: 150px;
+        width: 100vw;
+        background-color: darkblue;
+        color: white;
+        font-style: italic;
+        font-weight: bold;
+      }
+      /* Styling the Form (Color, Padding, Shadow) */
+      form {
+        background-color: #fff;
+        max-width: 500px;
+        margin: 50px auto;
+        padding: 30px 20px;
+        box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.5);
+      }
+
+      /* Styling form-control Class */
+      .form-control {
+        text-align: left;
+        margin-bottom: 25px;
+      }
+
+      /* Styling form-control Label */
+      .form-control label {
+        display: block;
+        margin-bottom: 10px;
+      }
+
+      /* Styling form-control input, 
+        select, textarea */
+      .form-control input,
+      .form-control select,
+      .form-control textarea {
+        border: 1px solid #777;
+        border-radius: 2px;
+        font-family: inherit;
+        padding: 10px;
+        display: block;
+        width: 95%;
+      }
+
+      /* Styling form-control Radio 
+        button and Checkbox */
+      .form-control input[type="radio"],
+      .form-control input[type="checkbox"] {
+        display: inline-block;
+        width: auto;
+      }
+
+      /* Styling Button */
+      button {
+        background-color: lightblue;
+        border: 1px solid #777;
+        border-radius: 2px;
+        font-family: inherit;
+        font-size: 21px;
+        display: block;
+        width: 100%;
+        margin-top: 50px;
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Rent Form</h1>
+
+    <!-- Create Form -->
+    <form id="form" method="post" action="/rent-post/<%= item._id %>">
+      <!-- Details -->
+      <div class="form-control">
+        <label for="Name" id="label-name"> Name </label>
+
+        <!-- Input Type Text -->
+        <input
+          type="text"
+          id="name"
+          name="Name"
+          placeholder="Enter your name"
+        />
+      </div>
+
+      <div class="form-control">
+        <label for="email" id="label-email"> Email </label>
+
+        <!-- Input Type Email-->
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Enter your email"
+        />
+      </div>
+
+      <div class="form-control">
+        <label for="role" id="label-role">
+          Which option best describes you?
+        </label>
+
+        <!-- Dropdown options -->
+        <select name="role" id="role">
+          <option value="student">Student</option>
+          <option value="intern">Intern</option>
+          <option value="professional">Professional</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+      <div class="form-control">
+        <label for="day" id="label-day">
+          No. of Days you want this Product...?
+        </label>
+
+        <!-- Input Type Email-->
+        <input
+          type="number"
+          id="day"
+          name="day"
+          placeholder="Enter No. of Days"
+        />
+      </div>
+
+      <!-- <div class="form-control">
+        <label for="total">Total Cost: <span id="totalCost">0</span></label>
+      </div> -->
+
+      <!-- Multi-line Text Input Control -->
+      <button type="submit" value="submit">Submit</button>
+    </form>
+  </body>
+
+  <!-- <script>
+    const dayInput = document.getElementById("day");
+    const rentPerDay =;
+    const totalCostSpan = document.getElementById("totalCost");
+
+    function updateTotalCost() {
+      const days = parseInt(dayInput.value, 10) || 0;
+      const totalCost = days * rentPerDay;
+      totalCostSpan.textContent = totalCost.toFixed(2);
+    }
+
+    dayInput.addEventListener("input", updateTotalCost);
+
+    // Initialize total cost on page load
+    updateTotalCost();
+  </script> -->
+</html>

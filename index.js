@@ -28,12 +28,13 @@ const cookieParser = require("cookie-parser");
 const cloudinary = require("./utils/cloudinary");
 const session = require("express-session");
 const flush = require("connect-flash");
+const Rent = require("./models/rentSchema");
 
 mongoose.connect(process.env.MONGO_URI).then(() => {
   console.log("MONGODB CONNECTED");
 });
 // console.log(`The Id is: ${process.pid}`);
-
+const array = [];
 // MiddleWares
 
 app.use(
@@ -74,7 +75,7 @@ const upload = multer(
 
 // upload and create a new item
 app.post("/upload", upload.single("productImage"), async (req, res) => {
-  const { Name, Price, Contact_NO, ADDRESS, category } = req.body;
+  const { Name, Price, Contact_NO, ADDRESS, category, rent } = req.body;
   try {
     const result = await cloudinary.uploader.upload(req.file.path, {
       folder: "uploads",
@@ -89,6 +90,7 @@ app.post("/upload", upload.single("productImage"), async (req, res) => {
         url: result.secure_url,
       },
       category,
+      rent,
     });
     await newItem.save();
     console.log("New item added:", newItem);
@@ -198,6 +200,26 @@ app.get("/getOne/:id", async (req, res) => {
   }
 });
 
+app.get("/rent-form/:id", async (req, res) => {
+  const id = req.params.id;
+  const item = await Product.findById(id);
+  return res.render("rent", { item: item });
+});
+// app.get("/rent/:id", async (req, res) => {
+//   const id = req.params.id;
+//   const item = await Product.findById(id);
+//   res.render("rent", { item: item });
+// });
+
+app.post("/rent-post/:id", async (req, res) => {
+  const { Name, email, day, role } = req.body;
+  const id = req.params.id;
+  const product = await Product.findById(id);
+  console.log(product);
+  const rentItem = await Rent.create({ Name, email, day, role });
+  res.status(200).render("payment", { product: product, rentItem: rentItem });
+});
+
 app.get("/logout", async (req, res) => {
   res.clearCookie("token");
   res.redirect("/login");
@@ -218,9 +240,29 @@ app.post("/login", async (req, res) => {
   res.status(200).send("User login successfully");
 });
 
+//Add To Cart
+
+app.get("/addtocart/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+    const product = await Product.findById(id);
+    if (product) {
+      array.push(product);
+      res.render("cart", { array: array });
+    } else {
+      // Product not found
+      res.status(404).send("Product not found");
+    }
+  } catch (error) {
+    // Error occurred while fetching product
+    console.error("Error fetching product:", error);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
 //DeleteRequest for Product
 
-app.delete("/delete/:id", async (req, res) => {
+app.delete("/remove/:id", async (req, res) => {
   const { id } = req.params;
   try {
     const deletedUser = await User.findByIdAndDelete(id);

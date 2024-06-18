@@ -9,6 +9,10 @@ const productSchema = new mongoose.Schema({
     type: Number,
     required: [true, "Please provide the price"],
   },
+  rent: {
+    type: Number,
+    required: [true, "Please provide the rent price"],
+  },
   Contact_NO: {
     type: Number,
     required: true,
