@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- Font Awesome -->
+    <script src="https://use.fontawesome.com/2d1c7583b1.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto"
+    />
+    <style>
+      html,
+      body {
+        margin: 0;
+        font-family: "Roboto", sans-serif;
+        background: #fff;
+      }
+
+      header {
+        display: flex;
+        justify-content: space-between;
+        padding: 20px;
+        margin-bottom: 20px;
+      }
+
+      #cart {
+        width: 150px;
+        min-width: 100px;
+        background: #e22e8c;
+        border-radius: 10px;
+        text-transform: uppercase;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .content {
+        display: grid;
+        grid-template-rows: 93px 109px auto;
+        grid-template-columns: 45px minmax(300px, 950px) 50px 350px;
+        gap: 10px;
+      }
+
+      .content h1 {
+        color: #fff;
+        text-transform: uppercase;
+        font-size: 32px;
+        text-align: center;
+        margin: 0;
+        grid-row: 2;
+        grid-column: 4;
+      }
+
+      label {
+        text-transform: uppercase;
+        font-size: 16px;
+        color: #336ac9;
+        font-weight: bold;
+      }
+
+      input {
+        color: #ca136b;
+        border: 1px solid #e2e1e8;
+        border-radius: 5px;
+        text-align: center;
+        padding: 5px 12px;
+        width: 60px;
+        height: 25px;
+      }
+
+      .shadow {
+        box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.3);
+      }
+
+      #checkoutNav {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100px;
+        height: 400px;
+        background: #336ac9;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+        grid-row: 3;
+      }
+
+      #checkoutNav ul {
+        color: #d5d2dd;
+        list-style: none;
+        padding: 0;
+        text-align: center;
+        font-size: 18px;
+        text-transform: uppercase;
+      }
+
+      #checkoutNav ul i.fa {
+        font-size: 25px;
+      }
+
+      .active {
+        color: #fbfbfb;
+      }
+
+      #checkoutCard {
+        max-width: 400px;
+        background: #fbfbfb;
+        border-radius: 10px;
+        grid-row: 3;
+        grid-column: 3 / 5;
+        align-self: start;
+      }
+
+      #details {
+        padding: 10px;
+        /* background: linear-gradient(#fbfbfb 40%, #d5d2dd 100%); */
+        background-color: white;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+      }
+
+      #details dl {
+        margin: 0;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: 60px auto;
+        justify-items: center;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+
+      #details dt {
+        color: #d5d2dd;
+        text-transform: uppercase;
+        font-size: 18px;
+        grid-row: 1;
+      }
+
+      #details dd {
+        color: #336ac9;
+        margin: 0;
+      }
+      #checkoutCard {
+        background-color: #f8f8f8ff;
+      }
+      #checkoutCard ul {
+        list-style: none;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0;
+        font-size: 18px;
+      }
+
+      #checkoutCard ul li input {
+        width: 30px;
+        height: 30px;
+        margin-left: 70px;
+        color: #336ac9;
+      }
+
+      #thumbnail {
+        width: 175px;
+        height: auto;
+      }
+
+      form {
+        padding-top: 1em;
+      }
+
+      form > * {
+        padding: 0 0.8em;
+        margin-bottom: 1.5em;
+      }
+
+      form > :last-child {
+        margin: 0;
+      }
+
+      #cards {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+
+      #cards ul {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+      }
+
+      #cards i.fa {
+        font-size: 40px;
+        color: #d5d2dd;
+      }
+
+      #cards i.fa.fa-cc-visa {
+        color: #ca136b;
+      }
+
+      #cardNumber {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: 10px;
+      }
+
+      #cardNumber label {
+        grid-column: 1 / -1;
+      }
+
+      #cardNumber input,
+      #securityInfo input {
+        padding: 0;
+        width: auto;
+        height: auto;
+        min-width: 60px;
+        min-height: 35px;
+      }
+
+      #securityInfo {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 10px;
+      }
+
+      #btnSubmit {
+        text-align: center;
+        width: 100%;
+        border: none;
+        height: 50px;
+        text-transform: uppercase;
+        border-radius: 0 0 10px 10px;
+        background: #336ac9;
+        color: #fbfbfb;
+        font-size: 20px;
+      }
+
+      footer {
+        text-align: center;
+        padding: 10px;
+        color: #fbfbfb;
+      }
+
+      footer a {
+        color: #fbfbfb;
+        padding: 0 20px;
+        text-decoration: none;
+      }
+
+      footer a:hover {
+        color: #336ac9;
+      }
+
+      @media screen and (max-width: 746px) {
+        .content {
+          display: block;
+        }
+
+        .content h1 {
+          margin: 1em;
+        }
+
+        #checkoutNav {
+          width: auto;
+          height: auto;
+          margin: 0 0 1em 0;
+          border-radius: 0;
+          display: block;
+        }
+
+        #checkoutNav ul {
+          display: flex;
+          justify-content: space-around;
+          min-width: 50%;
+          margin: 0;
+        }
+
+        #checkoutCard {
+          margin: auto;
+        }
+        .details img {
+          height: auto;
+          width: auto;
+        }
+
+        footer {
+          display: flex;
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section class="container">
+      <header>
+        <div id="cart">
+          <p>1 item <i class="fa fa-shopping-cart" aria-hidden="true"></i></p>
+        </div>
+      </header>
+      <section class="content">
+        <article id="checkoutNav" class="shadow">
+          <ul>
+            <li>
+              <p>01</p>
+              <i class="fa fa-truck" aria-hidden="true"></i>
+              <p>Shipping</p>
+            </li>
+            <li class="active">
+              <p>02</p>
+              <i class="fa fa-credit-card" aria-hidden="true"></i>
+              <p>Payment</p>
+            </li>
+            <li>
+              <p>03</p>
+              <i class="fa fa-envelope-o" aria-hidden="true"></i>
+              <p>Success</p>
+            </li>
+          </ul>
+        </article>
+        <h1>Product Name</h1>
+        <article id="checkoutCard" class="shadow">
+          <div id="details">
+            <dl>
+              <dt>Product</dt>
+              <dd>
+                <img
+                  id="thumbnail"
+                  src="https://res.cloudinary.com/dkwmmww8q/image/upload/<%= product.productImage.public_id %>"
+                  alt="<%= product.Name %>"
+                />
+              </dd>
+              <dt>Quantity</dt>
+              <dd><input type="number" value="1" /></dd>
+              <dt>Price</dt>
+              <dd>Product Price</dd>
+            </dl>
+          </div>
+          <form action="">
+            <div id="cards">
+              <ul>
+                <li><label>Card Type</label></li>
+                <li><i class="fa fa-cc-visa" aria-hidden="true"></i></li>
+                <li><i class="fa fa-cc-paypal" aria-hidden="true"></i></li>
+                <li><i class="fa fa-cc-amex" aria-hidden="true"></i></li>
+                <li><i class="fa fa-cc-mastercard" aria-hidden="true"></i></li>
+              </ul>
+            </div>
+            <div id="cardNumber">
+              <label>Card number</label>
+              <input type="number" placeholder="XXXX" />
+              <input type="number" placeholder="XXXX" />
+              <input type="number" placeholder="XXXX" />
+              <input type="number" placeholder="XXXX" />
+            </div>
+            <div id="securityInfo">
+              <label>Start date</label>
+              <label>Expiry date</label>
+              <label>CVV</label>
+              <input type="text" placeholder="MM/YY" />
+              <input type="text" placeholder="MM/YY" />
+              <input type="number" placeholder="XXX" />
+            </div>
+            <input type="submit" value="Check out" id="btnSubmit" />
+          </form>
+        </article>
+      </section>
+    </section>
+    <footer>
+      <a href="#">Contact</a>
+      <a href="#">Privacy</a>
+    </footer>
+  </body>
+</html>
