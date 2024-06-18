@@ -215,7 +215,7 @@ app.post("/rent-post/:id", async (req, res) => {
   const { Name, email, day, role } = req.body;
   const id = req.params.id;
   const product = await Product.findById(id);
-  console.log(product);
+  // console.log(product);
   const rentItem = await Rent.create({ Name, email, day, role });
   res.status(200).render("payment2", { product: product, rentItem: rentItem });
 });

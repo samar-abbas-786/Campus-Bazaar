@@ -125,7 +125,7 @@
         margin: 0;
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: 60px auto;
+        grid-template-rows: 40px auto;
         justify-items: center;
         align-items: center;
         margin-bottom: 20px;
@@ -332,12 +332,12 @@
                 />
               </dd>
               <dt>Quantity</dt>
-              <dd><input type="number" value="1" /></dd>
+              <dd><input type="number" readonly value="1" /></dd>
               <dt>Price</dt>
-              <dd>Product Price</dd>
+              <dd> ₹<%= rentItem.day*product.rent %></dd>
             </dl>
           </div>
-          <form action="">
+          <form action="/allProducts" method="get">
             <div id="cards">
               <ul>
                 <li><label>Card Type</label></li>
@@ -362,14 +362,20 @@
               <input type="text" placeholder="MM/YY" />
               <input type="number" placeholder="XXX" />
             </div>
-            <input type="submit" value="Check out" id="btnSubmit" />
+            <input
+              type="submit"
+              onclick="pay()"
+              value="Check out"
+              id="btnSubmit"
+            />
           </form>
         </article>
       </section>
     </section>
-    <footer>
-      <a href="#">Contact</a>
-      <a href="#">Privacy</a>
-    </footer>
   </body>
+  <script>
+    function pay() {
+      alert("Payment Successful");
+    }
+  </script>
 </html>
