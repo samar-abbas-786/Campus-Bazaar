@@ -102,36 +102,29 @@ app.post("/upload", upload.single("productImage"), async (req, res) => {
 });
 
 app.get("/about_section", (req, res) => {
-  return res.render("about");
+  const token = req.cookies.token;
+  return res.render("about", { cookie: token });
 });
 
 app.get("/", (req, res) => {
-  return res.render("index");
+  console.log("Cookies:", req.cookies.token); // Log cookies to the console
+  const token = req.cookies.token; // Retrieve the cookie
+  res.render("index", { cookie: token }); // Pass the cookie to the template
 });
 
 app.get("/api/user/", async (req, res) => {
   try {
     const products = await Product.find({}).sort({ createdAt: -1 });
-
+    const token = req.cookies.token;
     // Render the 'show' EJS template and pass the products array to it
     return res.render("show", {
       products: products,
       cloud_name: process.env.cloud_name,
+      cookie: token,
     });
   } catch (error) {
     console.error("Error fetching products:", error);
     res.status(500).send("Error fetching products");
-  }
-});
-
-app.get("/go-to-cart/", async (req, res) => {
-  try {
-    const id = req.ObjectId;
-    const cart_products = await Product.findById(id);
-    return res.render("cart", { cart_products: cart_products });
-  } catch (error) {
-    console.error(error);
-    return res.status(500).send("Internal Server Error");
   }
 });
 
@@ -141,7 +134,8 @@ app.post("/button", (req, res) => {
 
 app.post("/signup/user", async (req, res) => {
   const { name, email, password } = req.body;
-  console.log(req.body);
+
+  // console.log(req.body);
   try {
     const newUser = await User.create({
       name,
@@ -160,8 +154,7 @@ app.post("/signup/user", async (req, res) => {
     });
     console.log(req.cookies.token);
     req.flash("msg", "Successfully signed");
-    res.status(200).render("add", { msg: req.flash("msg") });
-
+    res.redirect("/");
     // Render the signup page
   } catch (error) {
     console.error("Error adding new user:", error);
@@ -192,7 +185,8 @@ app.get("/getOne/:id", async (req, res) => {
       // Product with the given ID not found
       return res.status(404).send("Product not found");
     }
-    res.render("details", { product: product });
+    const token = req.cookies.token;
+    res.render("details", { product: product, cookie: token });
   } catch (error) {
     // Handle any errors that occur during the execution
     console.error("Error fetching product:", error);
@@ -203,7 +197,8 @@ app.get("/getOne/:id", async (req, res) => {
 app.get("/rent-form/:id", async (req, res) => {
   const id = req.params.id;
   const item = await Product.findById(id);
-  return res.render("rent", { item: item });
+  const token = req.cookies.token;
+  return res.render("rent", { item: item, cookie: token });
 });
 // app.get("/rent/:id", async (req, res) => {
 //   const id = req.params.id;
@@ -226,7 +221,8 @@ app.get("/logout", async (req, res) => {
 });
 
 app.get("/login", (req, res) => {
-  res.render("login");
+  const token = req.cookies.token;
+  res.render("login", { cookie: token });
 });
 
 app.post("/login", async (req, res) => {
@@ -244,11 +240,12 @@ app.post("/login", async (req, res) => {
 
 app.get("/addtocart/:id", async (req, res) => {
   const { id } = req.params;
+  const token = req.cookies.token;
   try {
     const product = await Product.findById(id);
     if (product) {
       array.push(product);
-      res.render("cart", { array: array });
+      res.render("cart", { array: array, cookie: token });
     } else {
       // Product not found
       res.status(404).send("Product not found");
@@ -275,24 +272,29 @@ app.delete("/remove/:id", async (req, res) => {
 
 app.get("/allProducts", async (req, res) => {
   const products = await Product.find({});
-  return res.render("show", { products: products });
+  const token = req.cookies.token;
+  return res.render("show", { products: products, cookie: token });
 });
 app.get("/explore", async (req, res) => {
   const products = await Product.find({});
-  return res.render("show", { products: products });
+  const token = req.cookies.token;
+  return res.render("show", { products: products, cookie: token });
 });
 app.get("/signup/get", (req, res) => {
   res.render("signup");
 });
 app.get("/home", (req, res) => {
-  res.render("index");
+  const token = req.cookies.token;
+  res.render("index", { user: req.user, cookie: token });
 });
 app.get("/suggest", (req, res) => {
-  return res.render("suggestion");
+  const token = req.cookies.token;
+  return res.render("suggestion", { cookie: token });
 });
 
 app.get("/add", (req, res) => {
-  res.render("add");
+  const token = req.cookies.token;
+  res.render("add", { cookie: token });
 });
 app.listen(PORT, () => {
   console.log(`App is running at http://localhost:${PORT}`);

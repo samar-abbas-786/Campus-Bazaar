@@ -388,6 +388,9 @@
   </body>
   <script>
     function pay() {
+      if (`<%= rentItem.day*product.rent %>" >= "<%=product.Price %>`) {
+        alert("Renting is not Good! You can buy it");
+      }
       alert("Payment Successful");
     }
   </script>

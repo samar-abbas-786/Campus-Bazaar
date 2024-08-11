@@ -67,9 +67,13 @@
             <button>Get</button>
           </form>
 
+          <% if (cookie) { %>
+          <form action=""><button>User</button></form>
+          <% } else { %>
           <form action="/signup/get" method="get">
             <button>Sign up</button>
           </form>
+          <% } %>
         </ul>
       </div>
       <div class="cart">
@@ -126,8 +130,7 @@
       <form action="/allProducts" method="get">
         <button>Get</button>
       </form>
-
-      <form action="/signup/get" method="get">
+      <form id="profile" action="/signup/get" method="get">
         <button>Sign up</button>
       </form>
     </div>
