@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+  </head>
+  <style>
+    .top {
+      height: 55vh;
+      width: 90vw;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding-top: 5rem;
+    }
+    .image {
+      height: 150px;
+      width: 150px;
+      border-radius: 50%;
+    }
+    .content {
+      font-size: 19px;
+      font-family: Arial, Helvetica, sans-serif;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      font-weight: bold;
+    }
+    .name {
+      margin-top: 1rem;
+    }
+    .email {
+      margin-top: 1rem;
+    }
+    button {
+      padding-left: 2rem;
+      padding-right: 2rem;
+      padding-top: 0.3rem;
+      padding-bottom: 0.3rem;
+      border-radius: 4px;
+      font-size: 17px;
+      font-weight: bold;
+      margin-top: 2rem;
+      border: none;
+      outline: none;
+      background-color: lightsteelblue;
+    }
+  </style>
+  <body>
+    <div class="top">
+      <div class="image">
+        <img src="/images/profile.png" alt="" />
+      </div>
+      <div class="content">
+        <div class="name"><%= user.name %></div>
+        <div class="email"><%= user.email %></div>
+      </div>
+      <button>Edit</button>
+    </div>
+  </body>
+</html>

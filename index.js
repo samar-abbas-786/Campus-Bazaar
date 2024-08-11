@@ -107,7 +107,7 @@ app.get("/about_section", (req, res) => {
 });
 
 app.get("/", (req, res) => {
-  console.log("Cookies:", req.cookies.token); // Log cookies to the console
+  // console.log("Cookies:", req.cookies.token); // Log cookies to the console
   const token = req.cookies.token; // Retrieve the cookie
   res.render("index", { cookie: token }); // Pass the cookie to the template
 });
@@ -217,7 +217,8 @@ app.post("/rent-post/:id", async (req, res) => {
 
 app.get("/logout", async (req, res) => {
   res.clearCookie("token");
-  res.redirect("/login");
+  // res.redirect("/login");
+  res.status(200).json("Logout Successfully");
 });
 
 app.get("/login", (req, res) => {
@@ -284,12 +285,27 @@ app.get("/signup/get", (req, res) => {
   res.render("signup");
 });
 app.get("/home", (req, res) => {
-  const token = req.cookies.token;
-  res.render("index", { user: req.user, cookie: token });
+  // const token = req.cookies.token;
+  // res.render("index", { user: req.user, cookie: token });
+  res.redirect("/");
 });
 app.get("/suggest", (req, res) => {
   const token = req.cookies.token;
   return res.render("suggestion", { cookie: token });
+});
+app.get("/user", async (req, res) => {
+  const token = req.cookies.token;
+  if (!token) {
+    res.status(500).json("Token Not Found");
+  }
+  const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
+  if (!decoded) {
+    res.status(500).json("No decoded found");
+  }
+  // console.log(decoded.id);
+  const user = await User.findById(decoded.id);
+  // console.log(user);
+  res.render("profile1", { user: user });
 });
 
 app.get("/add", (req, res) => {
