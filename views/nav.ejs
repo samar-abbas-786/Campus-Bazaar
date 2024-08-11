@@ -130,9 +130,13 @@
       <form action="/allProducts" method="get">
         <button>Get</button>
       </form>
-      <form id="profile" action="/signup/get" method="get">
-        <button>Sign up</button>
-      </form>
+      <% if (cookie) { %>
+        <form action=""><button>User</button></form>
+        <% } else { %>
+        <form action="/signup/get" method="get">
+          <button>Sign up</button>
+        </form>
+        <% } %>
     </div>
   </body>
   <script>
