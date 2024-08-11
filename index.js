@@ -293,6 +293,7 @@ app.get("/suggest", (req, res) => {
   const token = req.cookies.token;
   return res.render("suggestion", { cookie: token });
 });
+
 app.get("/user", async (req, res) => {
   const token = req.cookies.token;
   if (!token) {

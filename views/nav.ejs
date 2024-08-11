@@ -68,7 +68,9 @@
           </form>
 
           <% if (cookie) { %>
-          <form action="/user" method="get"><button>User</button></form>
+          <form action="/user" method="get">
+            <button><i class="fa-solid fa-circle-user fa-2xl"></i></button>
+          </form>
           <% } else { %>
           <form action="/signup/get" method="get">
             <button>Sign up</button>
@@ -119,6 +121,15 @@
           >&times</b
         >
       </button>
+      <% if (cookie) { %>
+      <form action="/user" method="get">
+        <button><i class="fa-solid fa-circle-user fa-2xl"></i></button>
+      </form>
+      <% } else { %>
+      <form action="/signup/get" method="get">
+        <button>Sign up</button>
+      </form>
+      <% } %>
       <form action="/home" method="get"><button>Home</button></form>
 
       <form action="/about_section" method="get">
@@ -130,13 +141,6 @@
       <form action="/allProducts" method="get">
         <button>Get</button>
       </form>
-      <% if (cookie) { %>
-      <form action=""><button>User</button></form>
-      <% } else { %>
-      <form action="/signup/get" method="get">
-        <button>Sign up</button>
-      </form>
-      <% } %>
     </div>
   </body>
   <script>
