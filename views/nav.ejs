@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title></title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -29,6 +29,7 @@
       .add {
         display: none;
       }
+
       @media screen and (max-width: 800px) {
         #mySidebar {
           text-align: center;
@@ -144,6 +145,35 @@
     </div>
   </body>
   <script>
+    window.onscroll = function () {
+      scrollFunction();
+    };
+
+    function scrollFunction() {
+      if (
+        document.body.scrollTop > 20 ||
+        document.documentElement.scrollTop > 20
+      ) {
+        // Change the background color and text color of the nav bar
+        document.getElementById("nav").style.backgroundColor = "#262626";
+        document.getElementById("nav").style.color = "white"; // Corrected to "white"
+
+        // Change the color of buttons inside .right class
+        document
+          .querySelectorAll(".right ul form button")
+          .forEach(function (button) {
+            button.style.color = "white";
+          });
+      } else {
+        // Revert the nav bar background color when scrolled up
+        document.getElementById("nav").style.backgroundColor = "#ffffff";
+        document
+          .querySelectorAll(".right ul form button")
+          .forEach(function (button) {
+            button.style.color = "#262626";
+          });
+      }
+    }
     document.getElementById("mySidebar").style.display = "none";
     function w3_open() {
       document.getElementById("mySidebar").style.display = "block";

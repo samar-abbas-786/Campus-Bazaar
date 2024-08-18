@@ -1,7 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: normal;
 }
 #bar {
   display: none;
@@ -27,8 +32,7 @@
   background-color: transparent;
   border: none;
 }
-
-nav {
+#nav {
   height: 80px;
   width: 100vw;
   display: flex;
@@ -40,7 +44,10 @@ nav {
   z-index: +1000;
   color: #262626;
   background-color: #ffffff;
-  box-shadow: 0px 3px #b5b5b8;
+  transition: background-color 0.5s ease, color 0.5s ease;
+
+  /* top: -80px; */
+  /* box-shadow: 0px 3px #b5b5b8; */
 }
 .left {
   width: 30vw;
@@ -69,11 +76,14 @@ nav {
   background-color: transparent;
   border: none;
   font-size: 16.5px;
-  font-weight: 540;
+  font-weight: 410;
   color: #262626;
+  transition: color 0.5s ease;
 }
 .right button:hover {
   opacity: 0.8;
+  /* background-color: orangered; */
+  /* color: white; */
 }
 .cart {
   display: flex;
@@ -214,6 +224,9 @@ nav {
   /* font-family: Arial, Helvetica, sans-serif; */
   font-family: "Fira Sans", sans-serif;
   text-align: start;
+}
+#txt p {
+  font-size: 16px;
 }
 
 /* Hero Portion  */
