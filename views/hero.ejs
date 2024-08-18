@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="style.css">
 
-<div class="hero">
+<div class="hero show">
     <div class="text" >
       <h1>
         Welcome to
@@ -21,3 +21,13 @@
     </div>
   </div>
 </div>
+<script>
+  window.open = function () {
+      heroFunction();
+    };
+
+    function heroFunction() {
+      // Add the "show" class to trigger the opacity and visibility transition
+      document.querySelector(".hero").classList.add("show");
+    }
+</script>
