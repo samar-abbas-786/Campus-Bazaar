@@ -11,8 +11,11 @@
     <style>
       body {
         font-family: "Roboto", sans-serif;
-        background-color: #f4f4f4;
-        margin: 0;
+        background: linear-gradient(
+          rgb(0, 0, 0) 0%,
+          rgb(37, 37, 37) 50%,
+          /* rgb(31, 30, 30) 60%, */ rgb(0, 0, 0) 100%
+        );         margin: 0;
         padding: 0;
         display: flex;
         justify-content: center;
@@ -24,15 +27,18 @@
         max-width: 400px;
         width: 90%;
         padding: 20px;
-        background-color: #fff;
-        border-radius: 5px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        background: linear-gradient(
+          rgb(0, 0, 0) 0%,
+          rgb(37, 37, 37) 50%,
+          /* rgb(31, 30, 30) 60%, */ rgb(0, 0, 0) 100%
+        );         border-radius: 5px;
+        box-shadow: 0 5px 10px rgba(219, 214, 214, 0.1);
       }
 
       h2 {
         text-align: center;
         margin-bottom: 20px;
-        color: #333;
+        color: #fff;
       }
 
       .form-group {
@@ -42,7 +48,7 @@
       label {
         display: block;
         margin-bottom: 5px;
-        color: #555;
+        color: #fff;
       }
 
       input[type="email"],

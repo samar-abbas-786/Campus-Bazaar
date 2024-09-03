@@ -19,8 +19,12 @@
     <style>
       body {
         font-family: "Poppins", sans-serif;
-        background-color: #f8f8fd;
-        color: #333;
+        background: linear-gradient(
+          rgb(0, 0, 0) 0%,
+          rgb(31, 30, 30) 50%,
+          rgb(0, 0, 0) 100%
+        );
+        color: #fff;
         margin: 0;
         padding: 0;
       }
@@ -29,17 +33,30 @@
       }
       .box {
         margin-top: 2rem;
-        margin-left: 2rem;
+        padding: 1rem;
+        margin-left: 1rem;
+        /* background-color: black; */
+        background: linear-gradient(
+          rgb(0, 0, 0) 0%,
+          rgb(37, 37, 37) 50%,
+          /* rgb(31, 30, 30) 60%, */ rgb(0, 0, 0) 100%
+        );
+      }
+      .box:hover {
+        scale: 1.01;
+        transition: 0.5s;
+        /* box-shadow: 8px 2px rgb(211, 209, 209); */
+        /* border: 1px solid white; */
       }
       h3 {
-        color: #1a237e;
-        font-size: 24px;
+        color: dimgray;
+        font-size: 22px;
         margin-bottom: 0.5rem;
       }
       p {
-        font-size: 18px;
+        font-size: 16px;
         line-height: 1.6;
-        color: #555;
+        color: #fff;
         /* color: white;
         padding: 1rem;
         border-radius: 10px;
@@ -47,7 +64,7 @@
       }
       i {
         margin-right: 1rem;
-        color: #1a237e;
+        color: dimgray;
       }
     </style>
   </head>

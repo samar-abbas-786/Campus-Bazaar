@@ -3,11 +3,24 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>Product Details</title>
     <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
       body {
+        background: linear-gradient(
+          rgb(0, 0, 0) 0%,
+          rgb(37, 37, 37) 50%,
+          /* rgb(31, 30, 30) 60%, */ rgb(0, 0, 0) 100%
+        );
+      }
+      .toppest {
         /* Light grey background */
-        background-color: #007bff;
+
         font-family: "Roboto", sans-serif;
         display: flex;
         flex-direction: column;
@@ -27,7 +40,12 @@
         max-width: 500px;
         width: 90%;
         padding: 2rem;
-        background-color: #fff; /* White background */
+        /* background-color: #fff;  */
+        background: linear-gradient(
+          rgb(0, 0, 0) 0%,
+          rgb(37, 37, 37) 50%,
+          /* rgb(31, 30, 30) 60%, */ rgb(0, 0, 0) 100%
+        );
         border-radius: 10px;
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
       }
@@ -55,10 +73,11 @@
       button[type="submit"] {
         width: 100%;
         height: 40px;
-        background-color: #007bff; /* Blue button */
+        background-color: black; /* Blue button */
         color: #fff;
+        border: 1px solid white;
         font-weight: bold;
-        border: none;
+        /* border: none; */
         border-radius: 5px;
         font-size: 16px;
         cursor: pointer;
@@ -94,72 +113,81 @@
   </head>
 
   <body>
-    <h2>Enter Product Details</h2>
-    <form
-      id="myform"
-      action="/upload"
-      method="post"
-      enctype="multipart/form-data"
-    >
-      <label for="name">Product Name:</label>
-      <input
-        required
-        id="name"
-        name="Name"
-        placeholder="Name of Your Product"
-        type="text"
-      />
+    <div class="left">
+      <a style="text-decoration: none; display: flex" href="/">
+        <pre><h1 style="color: rgb(44, 109, 179);font-size: 33px; font-weight: 600">🛍️Campus </h1></pre>
+        <h1 style="color: orange; font-size: 33px; font-weight: 600">Bazaar</h1>
+      </a>
+    </div>
+    <div class="toppest">
+      <h2>Enter Product Details</h2>
+      <form
+        id="myform"
+        action="/upload"
+        method="post"
+        enctype="multipart/form-data"
+      >
+        <label for="name">Product Name:</label>
+        <input
+          required
+          id="name"
+          name="Name"
+          placeholder="Name of Your Product"
+          type="text"
+        />
 
-      <label for="price">Price (Rs.):</label>
-      <input
-        required
-        id="price"
-        name="Price"
-        placeholder="Enter Price in Rupees of Your Product"
-        type="number"
-      />
+        <label for="price">Price (Rs.):</label>
+        <input
+          required
+          id="price"
+          name="Price"
+          placeholder="Enter Price in Rupees of Your Product"
+          type="number"
+        />
 
-      <label for="rent">Rent/day (Rs.):</label>
-      <input
-        required
-        id="price"
-        name="rent"
-        placeholder="Enter Rent per Day in Rupees of Your Product"
-        type="number"
-      />
+        <label for="rent">Rent/day (Rs.):</label>
+        <input
+          required
+          id="price"
+          name="rent"
+          placeholder="Enter Rent per Day in Rupees of Your Product"
+          type="number"
+        />
 
-      <label for="contact">Contact Number:</label>
-      <input
-        required
-        id="contact"
-        name="Contact_NO"
-        placeholder="Enter Your Contact Number"
-        type="text"
-      />
+        <label for="contact">Contact Number:</label>
+        <input
+          required
+          id="contact"
+          name="Contact_NO"
+          placeholder="Enter Your Contact Number"
+          type="text"
+        />
 
-      <label for="address">Address:</label>
-      <input
-        required
-        id="address"
-        name="ADDRESS"
-        placeholder="Enter Your Address"
-        type="text"
-      />
+        <label for="address">Address:</label>
+        <input
+          required
+          id="address"
+          name="ADDRESS"
+          placeholder="Enter Your Address"
+          type="text"
+        />
 
-      <label for="productImage">Upload Product Image</label>
-      <input type="file" id="productImage" name="productImage" />
+        <label for="productImage">Upload Product Image</label>
+        <input type="file" id="productImage" name="productImage" />
 
-      <!-- Dropdown menu -->
-      <label for="category">Select Category:</label>
-      <select id="category" name="category" required>
-        <option value="All">All Products</option>
-        <option value="Electronics">Electronics</option>
-        <option value="Education">Education</option>
-        <option value="Fashion/Lifestyle">Fashion/Lifestyle</option>
-        <option value="Other">Other</option>
-      </select>
+        <!-- Dropdown menu -->
+        <label for="category">Select Category:</label>
+        <select id="category" name="category" required>
+          <option value="All">All Products</option>
+          <option value="Electronics">Electronics</option>
+          <option value="Education">Education</option>
+          <option value="Fashion/Lifestyle">Fashion/Lifestyle</option>
+          <option value="Other">Other</option>
+        </select>
 
-      <button type="submit">Submit</button>
-    </form>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
   </body>
+  <script></script>
 </html>

@@ -1,25 +1,29 @@
 <link rel="stylesheet" href="style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
 <div class="hero show">
-    <div class="text" >
-      <h1>
-        Welcome to
-        <i style="letter-spacing: 1rem; font-style: normal"
-          ><b><span>Campus</span></b><b>Bazaar</b></i
-        >
-      </h1>
-      <p>
-        Revolutionize hostel and college living with our diverse rentals. Furnish your space, upgrade your workspace, simplify your routine. Easy renting with our user-friendly platform
-      </p>
-      <!-- </div> -->
-      <form action="/explore" method="get"><button>Explore  <i class="fa-solid fa-angles-right fa-lg" style="color: #ffffff;"></i></button></form>
-    </div>
-    <div class="home-pic">
-      <div class="out">
-      <img src="/images/new_college.jpg" alt="image">
-    </div>
-    </div>
+  <div class="text">
+    <h1>
+      Welcome to
+      <i style="letter-spacing: 1rem; font-style: normal">
+        <b><span>Campus</span></b><b>Bazaar</b>
+      </i>
+    </h1>
+    <p>
+      Revolutionize hostel and college living with our diverse rentals. Furnish your space, upgrade your workspace, simplify your routine. Easy renting with our user-friendly platform.
+    </p>
+    <form action="/explore" method="get">
+      <button>Explore <i class="fa-solid fa-angles-right fa-lg" style="color: #ffffff;"></i></button>
+    </form>
   </div>
+  <div class="home-pic">
+    <!-- <img style="background-color: none;" src="</div>/images/college-stuff.jpeg" alt="" srcset=""> -->
+     <img  src="/images/lp2.svg" alt="" srcset="">
+     <img style="position: absolute;height: 120px;width: 250px;margin-bottom: 6rem;margin-left: 5rem;" src="/images/college-stuff.jpeg" alt="">
+  </div>
+  <!-- <div id="threejs-canvas-container"></div> -->
+</div>
+
 </div>
 <script>
   window.open = function () {
@@ -31,3 +35,41 @@
       document.querySelector(".hero").classList.add("show");
     }
 </script>
+<!-- <script>
+  // Create the scene, camera, and renderer
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+  const renderer = new THREE.WebGLRenderer();
+  
+  // Set the size of the renderer to fill the container
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  
+  // Append the renderer's canvas to the container
+  document.getElementById('threejs-canvas-container').appendChild(renderer.domElement);
+
+  // Create a 3D cube
+  const geometry = new THREE.BoxGeometry();
+  const material = new THREE.MeshBasicMaterial({ color: 0xffffff });
+  const cube = new THREE.Mesh(geometry, material);
+  
+  // Add the cube to the scene
+  scene.add(cube);
+
+  // Position the camera
+  camera.position.z = 5;
+
+  // Animation loop
+  function animate() {
+    requestAnimationFrame(animate);
+    
+    // Rotate the cube for animation
+    cube.rotation.x += 0.01;
+    cube.rotation.y += 0.01;
+
+    // Render the scene from the perspective of the camera
+    renderer.render(scene, camera);
+  }
+
+  // Start the animation loop
+  animate();
+</script> -->

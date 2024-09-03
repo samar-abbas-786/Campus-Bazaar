@@ -29,6 +29,9 @@
       .add {
         display: none;
       }
+      .addnav {
+        background-color: #1e1d1d;
+      }
 
       @media screen and (max-width: 800px) {
         #mySidebar {
@@ -47,7 +50,7 @@
     </style>
   </head>
   <body>
-    <nav id="nav">
+    <nav id="nav" class="addNav">
       <div class="left">
         <pre><h1 style="color: rgb(44, 109, 179); font-weight: 600">🛍️Campus </h1></pre>
         <h1 style="color: orange; font-weight: 600">Bazaar</h1>
@@ -79,7 +82,7 @@
           <% } %>
         </ul>
       </div>
-      <div class="cart">
+      <!-- <div class="cart">
         <form action="/go-to-cart" method="get">
           <button
             style="
@@ -91,7 +94,7 @@
             <i
               id="cart"
               class="fa-solid fa-cart-shopping fa-2xl"
-              style="color: #262626"
+              style="color: #fff"
             ></i>
           </button>
         </form>
@@ -99,9 +102,9 @@
           id="bar"
           onclick="w3_open()"
           class="fa-solid fa-bars fa-2xl"
-          style="color: #262626"
+          style="color: #fff"
         ></i>
-      </div>
+      </div> -->
     </nav>
     <div
       class="w3-sidebar w3-bar-block w3-animate-right add"
@@ -155,27 +158,18 @@
         document.documentElement.scrollTop > 20
       ) {
         // Change the background color and text color of the nav bar
-        document.getElementById("nav").style.backgroundColor = "#262626";
-        document.getElementById("nav").style.color = "white"; // Corrected to "white"
-        document.querySelector(".cart i").style.color = "white"; // Corrected to "white"
-        document.getElementById("bar").style.color = "white"; // Corrected to "white"
+        document.getElementById("nav").style.backgroundColor = "#1e1d1d";
+        // document.getElementById("nav").style.color = "white"; // Corrected to "white"
+        // document.querySelector(".cart i").style.color = "white"; // Corrected to "white"
+        // document.getElementById("bar").style.color = "white"; // Corrected to "white"
+        // var element = document.getElementById("nav");
+        // element.classList.add("addnav");
 
         // Change the color of buttons inside .right class
-        document
-          .querySelectorAll(".right ul form button")
-          .forEach(function (button) {
-            button.style.color = "white";
-          });
       } else {
+        document.getElementById("nav").style.backgroundColor = "transparent";
+
         // Revert the nav bar background color when scrolled up
-        document.getElementById("nav").style.backgroundColor = "#ffffff";
-        document
-          .querySelectorAll(".right ul form button")
-          .forEach(function (button) {
-            button.style.color = "#262626";
-          });
-        document.querySelector(".cart i").style.color = "#262626"; // Corrected to "white"
-        document.getElementById("bar").style.color = "#262626"; // Corrected to "white"
       }
     }
     document.getElementById("mySidebar").style.display = "none";

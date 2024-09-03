@@ -10,7 +10,11 @@
       /* Styling the Body element 
         i.e. Color, Font, Alignment */
       body {
-        background-color: #fff;
+        background: linear-gradient(
+          rgb(0, 0, 0) 0%,
+          rgb(37, 37, 37) 50%,
+          /* rgb(31, 30, 30) 60%, */ rgb(0, 0, 0) 100%
+        );
         font-family: Verdana;
         text-align: center;
       }
@@ -24,7 +28,12 @@
       }
       /* Styling the Form (Color, Padding, Shadow) */
       form {
-        background-color: #fff;
+        background: linear-gradient(
+          rgb(0, 0, 0) 0%,
+          rgb(37, 37, 37) 50%,
+          rgb(0, 0, 0) 100%
+        );
+        border: 1px solid white;
         max-width: 500px;
         margin: 50px auto;
         padding: 30px 20px;
@@ -41,6 +50,7 @@
       .form-control label {
         display: block;
         margin-bottom: 10px;
+        color: white;
       }
 
       /* Styling form-control input, 
@@ -80,7 +90,7 @@
   </head>
 
   <body>
-    <h1>Rent Form</h1>
+    <h1 style="color: white">Rent Form</h1>
 
     <!-- Create Form -->
     <form id="form" method="post" action="/rent-post/<%= item._id %>">
