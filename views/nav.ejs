@@ -82,7 +82,7 @@
           <% } %>
         </ul>
       </div>
-      <!-- <div class="cart">
+      <div class="cart">
         <form action="/go-to-cart" method="get">
           <button
             style="
@@ -91,11 +91,11 @@
               height: max-content;
             "
           >
-            <i
+            <!-- <i
               id="cart"
               class="fa-solid fa-cart-shopping fa-2xl"
               style="color: #fff"
-            ></i>
+            ></i> -->
           </button>
         </form>
         <i
@@ -104,20 +104,11 @@
           class="fa-solid fa-bars fa-2xl"
           style="color: #fff"
         ></i>
-      </div> -->
+      </div>
     </nav>
-    <div
-      class="w3-sidebar w3-bar-block w3-animate-right add"
-      style="
-        width: 200px;
-        display: block;
-        right: 0;
-        position: absolute;
-        z-index: 100000;
-      "
-      id="mySidebar"
-    >
+    <div class="w3-sidebar w3-bar-block w3-animate-right add" id="mySidebar">
       <button
+        id="cross"
         class="w3-bar-item w3-button w3-large w3-hide-large"
         onclick="w3_close()"
       >

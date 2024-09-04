@@ -6,6 +6,22 @@
     <title></title>
   </head>
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    .toplevel {
+      font-size: 23px;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    body {
+      background: linear-gradient(
+        rgb(0, 0, 0) 0%,
+        rgb(31, 30, 30) 50%,
+        rgb(0, 0, 0) 100%
+      );
+    }
     .top {
       height: 55vh;
       width: 90vw;
@@ -13,11 +29,18 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      color: white;
       padding-top: 5rem;
     }
     .image {
-      height: 150px;
-      width: 150px;
+      height: 200px;
+      width: 200px;
+      border-radius: 50%;
+      background-color: black;
+    }
+    .image img {
+      height: 200px;
+      width: 200px;
       border-radius: 50%;
     }
     .content {
@@ -45,7 +68,8 @@
       margin-top: 2rem;
       border: none;
       outline: none;
-      background-color: lightsteelblue;
+      background-color: rgb(254, 1, 1);
+      border: 1px solid white;
     }
   </style>
   <body>
@@ -57,9 +81,9 @@
         <div class="name"><%= user.name %></div>
         <div class="email"><%= user.email %></div>
       </div>
-      <button>
-        <a href="/" style="text-decoration: none; color: rgb(0, 0, 0)">Home</a>
-      </button>
+      <form action="/logout" method="get">
+        <button type="submit">Logout</button>
+      </form>
     </div>
   </body>
 </html>

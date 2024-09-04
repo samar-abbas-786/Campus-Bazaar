@@ -1,8 +1,8 @@
 // const os = require("os");
-// const cluster = require("cluster");
+// // const cluster = require("cluster");
 
 // const total_cpu = os.availableParallelism();
-// // console.log(total);
+// console.log(total_cpu);
 
 // if (cluster.isPrimary) {
 //   for (let i = 0; i < total_cpu; i++) {
@@ -100,7 +100,7 @@ app.post("/upload", upload.single("productImage"), async (req, res) => {
     });
     await newItem.save();
     console.log("New item added:", newItem);
-    res.status(201).json("File uploaded successfully.");
+    res.status(201).redirect("/allProducts");
   } catch (error) {
     console.error("Error adding new item:", error);
     res.status(500).send("Error adding new item");
@@ -211,11 +211,7 @@ app.get("/rent-form/:id", async (req, res) => {
   const token = req.cookies.token;
   return res.render("rent", { item: item, cookie: token });
 });
-// app.get("/rent/:id", async (req, res) => {
-//   const id = req.params.id;
-//   const item = await Product.findById(id);
-//   res.render("rent", { item: item });
-// });
+
 
 app.post("/rent-post/:id", async (req, res) => {
   const { Name, email, day, role } = req.body;
@@ -229,7 +225,7 @@ app.post("/rent-post/:id", async (req, res) => {
 app.get("/logout", async (req, res) => {
   res.clearCookie("token");
   // res.redirect("/login");
-  res.status(200).json("Logout Successfully");
+  res.status(200).redirect("/");
 });
 
 app.get("/login", (req, res) => {

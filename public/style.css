@@ -16,6 +16,14 @@
   position: relative;
   overflow: hidden;
 } */
+#mySidebar {
+  width: 100%;
+  text-align: center;
+  display: block;
+  right: 0;
+  position: absolute;
+  z-index: 100000;
+}
 #bar {
   display: none;
 }
@@ -23,7 +31,7 @@
 .sidebar {
   height: 200px;
   width: 100vw;
-  background-color: #f8f8fd;
+  background-color: #262626;
   display: none;
 }
 .sidebar ul {
@@ -34,6 +42,7 @@
   justify-content: space-evenly;
   padding-left: 5px;
   padding-right: 5px;
+  color: white;
 }
 
 .sidebar button {
@@ -84,13 +93,14 @@
 .right button {
   background-color: transparent;
   border: none;
-  font-size: 13.5px;
+  font-size: 15px;
   font-weight: 410;
   color: gray;
   transition: color 0.5s ease;
+  cursor: pointer;
 }
 .right button:hover {
-  opacity: 0.8;
+  color: white;
 
   /* background-color: orangered; */
   /* color: white; */
@@ -130,6 +140,13 @@
 .hero.show {
   opacity: 1;
   visibility: visible;
+}
+#im {
+  position: absolute;
+  height: 120px;
+  width: 250px;
+  margin-bottom: 6rem;
+  margin-left: 5rem;
 }
 
 .home-pic {
@@ -198,17 +215,18 @@
   padding-top: 7px;
   padding-bottom: 7px;
   padding-right: 2.4rem;
-  font-size: 19px;
-  background-color: rgb(231, 99, 12);
+  font-size: 17px;
+  background-color: rgb(28, 27, 27);
   font-family: "Roboto", sans-serif;
   color: white;
   border: none;
   font-weight: bold;
   border-radius: 5px;
   margin-top: 1rem;
+  box-shadow: 2px 2px 2px white;
 }
 .hero button:hover {
-  background-color: rgb(247, 119, 72);
+  background-color: black;
   transition: 0.1s;
 }
 
@@ -310,6 +328,14 @@
   font-style: normal;
   border: 1px solid darkgrey;
   padding: 6px;
+}
+.box1:hover {
+  /* transform: rotateZ(3deg);
+  transition: 0.2s; */
+  /* border: 0.5px solid rgb(202, 162, 241); */
+  padding: none;
+  transition: 0.3s;
+  scale: 1.04;
 }
 .box1 h2 {
   color: gray;
@@ -443,9 +469,11 @@ footer .right {
 }
 .social i {
   color: white;
+  cursor: pointer;
 }
 .social i:hover {
   scale: 1.1;
+  color: rgb(218, 182, 252);
   transition: 0.3s ease all;
 }
 /* footer Section */
@@ -474,7 +502,7 @@ footer .right {
 @media screen and (max-width: 800px) {
   nav {
     height: 80px;
-    box-shadow: 0px 1px rgb(165, 162, 162);
+    /* box-shadow: 0px 1px rgb(165, 162, 162); */
     width: 100vw;
     background-color: white;
   }
@@ -499,10 +527,11 @@ footer .right {
     padding-right: 0;
     flex-direction: column;
     text-align: center;
+    padding-top: 6rem;
     /* height: 80vh; */
   }
   .home-pic {
-    height: max-content;
+    height: 80vh;
     padding-left: 0;
     padding-top: 8rem;
     padding-bottom: 0;
@@ -518,6 +547,7 @@ footer .right {
     border-radius: 5px;
     padding: 0;
   }
+
   #bar {
     display: block;
   }
@@ -549,7 +579,9 @@ footer .right {
     font-size: 18px;
     width: 90vw;
     font-family: serif;
-    color: rgb(49, 43, 43);
+    text-align: center;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    color: rgb(134, 124, 124);
   }
   .hero h1 {
     margin-bottom: 0.6rem;
@@ -576,6 +608,7 @@ footer .right {
   }
   #txt {
     width: 100vw;
+    height: 70vh;
     padding-left: 5px;
     padding-right: 5px;
   }
@@ -583,8 +616,9 @@ footer .right {
     font-size: 1.6rem;
   }
   #txt p {
-    font-size: 16px;
-    padding-left: 1rem;
+    font-size: 13px;
+    padding: 1rem;
+    color: rgb(156, 146, 146);
   }
   .service {
     height: max-content;
@@ -638,12 +672,17 @@ footer .right {
     margin-top: 2rem;
     height: max-content;
     font-size: 15px;
-    padding-bottom: 1rem;
-    padding-top: 1rem;
+    padding-bottom: 1.5rem;
+    padding-top: 1.5rem;
     border: none;
     color: white;
 
     /* background-color: antiquewhite; */
+  }
+  .b1 i {
+    position: relative;
+    text-align: justify;
+    height: 10px;
   }
 
   .b2 {
@@ -669,5 +708,27 @@ footer .right {
   }
   .copy {
     font-size: 12px;
+  }
+  #tag {
+    display: none;
+  }
+  #mySidebar {
+    background-color: #262626;
+    color: white;
+    width: 50vw;
+    text-align: center;
+  }
+  #mySidebar button {
+    color: white;
+  }
+  #lp {
+    width: 330px;
+    height: 400px;
+  }
+  #im {
+    width: 205px;
+    height: 100px;
+    margin-bottom: 5rem;
+    margin-left: 4.1rem;
   }
 }
