@@ -14,7 +14,7 @@ const app = express();
 // const { v4: uuidv4 } = require("uuid");
 const mongoose = require("mongoose");
 const path = require("path");
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 8000;
 const bodyParser = require("body-parser");
 const Product = require("./models/productSchema");
 const User = require("./models/userSchema");
@@ -29,16 +29,22 @@ const cloudinary = require("./utils/cloudinary");
 const session = require("express-session");
 const flush = require("connect-flash");
 const Rent = require("./models/rentSchema");
+const redis = require("redis");
+const { error } = require("console");
+let redisClient;
 
-mongoose
-  .connect(process.env.MONGO_URI, {
-    // useNewUrlParser: true,
-    // useUnifiedTopology: true,
-    serverSelectionTimeoutMS: 30000, // 30 seconds
-  })
-  .then(() => {
-    console.log("MONGODB CONNECTED");
+(async () => {
+  redisClient = redis.createClient();
+  redisClient.on(error, () => {
+    console.log(`Error-Redis : ${error}`);
   });
+  await redisClient.connect();
+})();
+
+mongoose.connect(process.env.MONGO_URI).then(() => {
+  console.log("MONGODB CONNECTED");
+});
+
 // console.log(`The Id is: ${process.pid}`);
 const array = [];
 // MiddleWares
@@ -82,10 +88,13 @@ const upload = multer(
 // upload and create a new item
 app.post("/upload", upload.single("productImage"), async (req, res) => {
   const { Name, Price, Contact_NO, ADDRESS, category, rent } = req.body;
+
   try {
     const result = await cloudinary.uploader.upload(req.file.path, {
       folder: "uploads",
     });
+    // console.log(req.files[0]);
+
     const newItem = new Product({
       Name,
       Price,
@@ -188,7 +197,7 @@ app.post("/submitsuggestion", async (req, res) => {
   }
 });
 
-app.get("/getOne/:id", async (req, res) => {
+app.get("/getOne/:id", protect, async (req, res) => {
   try {
     const { id } = req.params;
     const product = await Product.findById(id);
@@ -212,7 +221,6 @@ app.get("/rent-form/:id", async (req, res) => {
   return res.render("rent", { item: item, cookie: token });
 });
 
-
 app.post("/rent-post/:id", async (req, res) => {
   const { Name, email, day, role } = req.body;
   const id = req.params.id;
@@ -229,19 +237,28 @@ app.get("/logout", async (req, res) => {
 });
 
 app.get("/login", (req, res) => {
-  const token = req.cookies.token;
-  res.render("login", { cookie: token });
+  // const token = req.cookies.token;
+  res.render("login");
 });
 
 app.post("/login", async (req, res) => {
   const { email, password } = req.body;
-  const user = await User.findOne({ email }).select("+password");
-  console.log(user);
-
-  if (!user || !user.correctPassword(password, user.password)) {
+  const newUser = await User.findOne({ email }).select("+password");
+  // console.log(user);
+  const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET_KEY, {
+    expiresIn: process.env.JWT_EXPIRY,
+  });
+  res.cookie("token", token, {
+    httpOnly: true,
+    secure: false,
+    maxAge: 3600000,
+  });
+  if (!newUser || !newUser.correctPassword(password, newUser.password)) {
     return res.status(401).send("Invalid email or password");
   }
-  res.status(200).send("User login successfully");
+  // console.log(token);
+
+  res.status(200).redirect("/");
 });
 
 //Add To Cart
@@ -281,6 +298,7 @@ app.delete("/remove/:id", async (req, res) => {
 app.get("/allProducts", async (req, res) => {
   const products = await Product.find({});
   const token = req.cookies.token;
+  // res.status(200).json({ products });
   return res.render("show", { products: products, cookie: token });
 });
 app.get("/explore", async (req, res) => {
@@ -315,8 +333,12 @@ app.get("/user", async (req, res) => {
   // console.log(user);
   res.render("profile1", { user: user });
 });
+app.get("/protect", async (req, res) => {
+  await protect();
+  res.status(200).json({ message: "Got " });
+});
 
-app.get("/add", (req, res) => {
+app.get("/add", protect, (req, res) => {
   const token = req.cookies.token;
   res.render("add", { cookie: token });
 });

@@ -3,6 +3,7 @@
 
 <div class="hero show">
   <div class="text">
+    <div style="color: white;padding: 3px 8px 3px 8px; background-color: orangered; border-radius: 4px;font-size: 10px;" class="top">Total Visits:  <span  style="color: white;" id="block"></span></div>
     <h1>
       Welcome to
       <i style="letter-spacing: 1rem; font-style: normal">
@@ -16,7 +17,7 @@
       <button>Explore <i class="fa-solid fa-angles-right fa-lg" style="color: #ffffff;"></i></button>
     </form>
   </div>
-  <div class="home-pic">
+  <div style="margin-top: 40px;" class="home-pic">
     <!-- <img style="background-color: none;" src="</div>/images/college-stuff.jpeg" alt="" srcset=""> -->
      <img id="lp"  src="/images/lp2.svg" alt="" srcset="">
      <img id="im"  src="/images/cloth.avif" alt="">
@@ -34,6 +35,14 @@
       // Add the "show" class to trigger the opacity and visibility transition
       document.querySelector(".hero").classList.add("show");
     }
+    let count=0;
+    window.addEventListener('load',()=>{
+      count++;
+      localStorage.setItem('count',count);
+      document.getElementById('block').innerHTML=count;
+    })
+    count=localStorage.getItem('count');
+
 </script>
 <!-- <script>
   // Create the scene, camera, and renderer

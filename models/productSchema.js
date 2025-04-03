@@ -31,18 +31,18 @@ const productSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  expired: {
-    type: Boolean,
-    default: false,
-  },
-  createdBy: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "users",
-  },
-  createdAt: {
-    type: Date,
-    default: Date.now,
-  },
+  // expired: {
+  //   type: Boolean,
+  //   default: false,
+  // },
+  // createdBy: {
+  //   type: mongoose.Schema.Types.ObjectId,
+  //   ref: "users",
+  // },
+  // createdAt: {
+  //   type: Date,
+  //   default: Date.now,
+  // },
   category: {
     type: String,
     enum: ["Electronics", "Education", "Fashion/Lifestyle", "All", "Other"],

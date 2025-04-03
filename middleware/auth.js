@@ -4,12 +4,10 @@ const User = require("../models/userSchema");
 async function protect(req, res, next) {
   let token;
 
-  // Extract token from cookies
   token = req.cookies.token;
   console.log(token);
 
   if (!token) {
-    // confirm("Please Signup or login before signing up");
     return res.status(403).render("signup");
   }
 
@@ -19,9 +17,14 @@ async function protect(req, res, next) {
       token,
       process.env.JWT_SECRET_KEY
     );
+    // console.log(decoded);
+
+    // const decoded = await jwt.verify(token, process.env.JWT_SECRET_KEY);
 
     // Find user by ID from decoded token
-    const user = await User.findById(decoded._id);
+    const user = await User.findById(decoded.id);
+    console.log(user);
+
     if (!user) {
       return res.status(403).render("signup");
     }

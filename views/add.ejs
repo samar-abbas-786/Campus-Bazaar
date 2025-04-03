@@ -113,6 +113,7 @@
   </head>
 
   <body>
+    <% if (cookie) { %>
     <div class="left">
       <a style="text-decoration: none; display: flex" href="/">
         <pre><h1 style="color: rgb(44, 109, 179);font-size: 33px; font-weight: 600">🛍️Campus </h1></pre>
@@ -188,6 +189,9 @@
         <button type="submit">Submit</button>
       </form>
     </div>
+    <% } else { %>
+    <h1>You Are Not Authorized to Use this</h1>
+    <% } %>
   </body>
   <script></script>
 </html>
